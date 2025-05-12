@@ -3,152 +3,97 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bioskop Modern</title>
+  <title>MovieSuper - Streaming HD</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="bioskop_style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="bioskop_script.js"></script>
 </head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body style="background-color: #f4f1e8;">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e94e1b;">
     <div class="container">
-      <a class="navbar-brand" href="#">Bioskop Modern</a>
-      <div class="ms-auto">
-        <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#registerModal">Daftar</button>
+      <a class="navbar-brand" href="#">MovieSuper</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#">Top Rated Movies</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Coming Soon</a></li>
+              <li><a class="dropdown-item" href="#">Genres</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#">Top Rated TV Show</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">New Releases</a></li>
+              <li><a class="dropdown-item" href="#">Categories</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex me-2">
+          <input class="form-control me-2" type="search" placeholder="Search Movie/TV">
+          <button class="btn btn-light" type="submit">🔍</button>
+        </form>
+        <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#loginModal">LOGIN / REGISTER</button>
       </div>
     </div>
   </nav>
 
-  <div class="container">
-    <h2 class="mb-4">Daftar Film</h2>
-    <div class="row" id="filmList">
-      <div class="col-md-4">
-        <div class="card mb-4">
-          <img src="https://via.placeholder.com/300x400" class="card-img-top" alt="Film 1">
-          <div class="card-body">
-            <h5 class="card-title">Film A</h5>
-            <p class="card-text">Deskripsi singkat film A.</p>
-            <button class="btn btn-primary btn-book" data-title="Film A">Pesan Tiket</button>
+  <div id="carouselBanner" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="278cc0d0-4d74-4ac6-a08e-bf298929b0ac.png" class="d-block w-100" alt="Banner Image">
+        <div class="carousel-caption d-none d-md-block">
+          <h1 class="fw-bold">Welcome to MovieSuper</h1>
+          <p>Watch Movie and TV Streaming Full HD</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="278cc0d0-4d74-4ac6-a08e-bf298929b0ac.png" class="d-block w-100" alt="Banner Image">
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <h3><i class="bi bi-film"></i> Popular Movies</h3>
+        <div class="row">
+          <div class="col-4">
+            <img src="https://upload.wikimedia.org/wikipedia/en/1/1e/The_Magnificent_Seven_2016_film_poster.jpg" class="img-fluid">
+          </div>
+          <div class="col-4">
+            <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Captain_America_Civil_War_poster.jpg" class="img-fluid">
+          </div>
+          <div class="col-4">
+            <img src="https://upload.wikimedia.org/wikipedia/en/d/d3/Miss_Peregrine_Film_Poster.jpg" class="img-fluid">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3><i class="bi bi-tv"></i> Popular TV Show</h3>
+        <div class="row">
+          <div class="col-4">
+            <img src="https://upload.wikimedia.org/wikipedia/en/6/61/The_Big_Bang_Theory_Season_6.jpg" class="img-fluid">
+          </div>
+          <div class="col-4">
+            <img src="https://upload.wikimedia.org/wikipedia/en/1/1e/Westworld_poster.jpg" class="img-fluid">
+          </div>
+          <div class="col-4">
+            <img src="https://upload.wikimedia.org/wikipedia/en/0/02/Simpsons_FamilyPicture.png" class="img-fluid">
           </div>
         </div>
       </div>
     </div>
-
-    <hr>
-
-    <h4>Ulasan Pengguna</h4>
-    <form id="reviewForm" class="mb-5">
-      <div class="mb-3">
-        <label for="reviewMovie" class="form-label">Judul Film</label>
-        <input type="text" class="form-control" id="reviewMovie" placeholder="Contoh: Film A" required>
-      </div>
-      <div class="mb-3">
-        <label for="reviewText" class="form-label">Komentar</label>
-        <textarea class="form-control" id="reviewText" rows="3" placeholder="Tulis ulasan kamu di sini..." required></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Kirim Ulasan</button>
-    </form>
-
-    <h4>Pembayaran</h4>
-    <form id="paymentForm">
-      <div class="mb-3">
-        <label for="paymentMethod" class="form-label">Metode Pembayaran</label>
-        <select class="form-control" id="paymentMethod" required>
-          <option value="">Pilih Metode</option>
-          <option value="Transfer Bank">Transfer Bank</option>
-          <option value="E-Wallet">E-Wallet</option>
-          <option value="Kartu Kredit">Kartu Kredit</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Bayar</button>
-    </form>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Bioskop Modern</p>
+  <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
+    <p>&copy; 2025 MovieSuper</p>
   </footer>
-
-  <!-- Modal Booking -->
-  <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="bookingForm">
-          <div class="modal-header">
-            <h5 class="modal-title">Pesan Tiket - <span id="modalMovieTitle"></span></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="name" class="form-label">Nama</label>
-              <input type="text" class="form-control" id="name" required>
-            </div>
-            <div class="mb-3">
-              <label for="seats" class="form-label">Jumlah Kursi</label>
-              <input type="number" class="form-control" id="seats" required min="1">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Konfirmasi</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Login -->
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="loginForm">
-          <div class="modal-header">
-            <h5 class="modal-title">Login</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="loginEmail" class="form-label">Email</label>
-              <input type="email" class="form-control" id="loginEmail" required>
-            </div>
-            <div class="mb-3">
-              <label for="loginPassword" class="form-label">Kata Sandi</label>
-              <input type="password" class="form-control" id="loginPassword" required>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Login</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal Register -->
-  <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <form id="registerForm">
-          <div class="modal-header">
-            <h5 class="modal-title">Daftar</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label for="registerEmail" class="form-label">Email</label>
-              <input type="email" class="form-control" id="registerEmail" required>
-            </div>
-            <div class="mb-3">
-              <label for="registerPassword" class="form-label">Kata Sandi</label>
-              <input type="password" class="form-control" id="registerPassword" required>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Daftar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
 </body>
 </html>
