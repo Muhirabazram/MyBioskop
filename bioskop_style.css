@@ -59,16 +59,11 @@ body {
   gap: 15px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 10px 40px; /* spasi untuk panah */
+  padding: 10px 20px; /* spasi untuk panah */
 }
 
 .movie-carousel::-webkit-scrollbar {
   display: none;
-}
-
-.movie-card {
-  min-width: 180px;
-  flex-shrink: 0;
 }
 
 .carousel-arrow {
@@ -98,13 +93,15 @@ body {
   right: 5px;
 }
 
-
 .movie-card {
+  min-width: 180px;
+  flex-shrink: 0;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
   transition: transform 0.3s;
 }
+
 
 .movie-card img {
   width: 100%;
