@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Film - MovieSuper</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="bioskop_style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MovieSuper</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/9ix7TUGVYIo" title="YouTube video trailer" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-danger">Captain America: Civil War</h2>
+        <p><strong>Genre:</strong> Action, Adventure, Sci-Fi</p>
+        <p><strong>Rating:</strong> 7.8/10</p>
+        <p><strong>Director:</strong> Anthony Russo, Joe Russo</p>
+        <p><strong>Casting:</strong> Chris Evans, Robert Downey Jr., Scarlett Johansson, Sebastian Stan</p>
+        <p><strong>Sinopsis:</strong> Setelah peristiwa Avengers: Age of Ultron, tekanan politik meningkat untuk memasang sistem akuntabilitas. Perpecahan muncul di antara para Avengers karena ketidaksepakatan tentang pengawasan pemerintah.</p>
+        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Captain America: Civil War">Pesan Tiket</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
+    <p>&copy; 2025 MovieSuper</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.querySelector('[data-title]')?.addEventListener('click', function (e) {
+      const title = this.getAttribute('data-title');
+      localStorage.setItem('bookingMovie', title);
+    });
+  </script>
+</body>
+</html>
