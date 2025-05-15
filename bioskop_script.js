@@ -20,6 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  button.addEventListener("click", () => {
+  const title = button.getAttribute("data-title");
+  ...
+});
+
+
   const bookingForm = document.getElementById("bookingForm");
   if (bookingForm) {
     bookingForm.addEventListener("submit", (e) => {
