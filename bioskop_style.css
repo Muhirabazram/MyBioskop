@@ -50,20 +50,54 @@ body {
 }
 
 .movie-carousel-wrapper {
-  overflow-x: auto;
-  scroll-behavior: smooth;
+  position: relative;
+  overflow: hidden;
 }
 
 .movie-carousel {
   display: flex;
   gap: 15px;
-  padding: 10px 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 40px; /* spasi untuk panah */
 }
 
-.movie-carousel .movie-card {
+.movie-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.movie-card {
   min-width: 180px;
   flex-shrink: 0;
 }
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.6);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.carousel-arrow:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.carousel-arrow.left {
+  left: 5px;
+}
+
+.carousel-arrow.right {
+  right: 5px;
+}
+
 
 .movie-card {
   position: relative;
