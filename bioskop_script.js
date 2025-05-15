@@ -25,6 +25,22 @@ document.addEventListener("DOMContentLoaded", () => {
   ...
 });
 
+  document.querySelectorAll(".btn-trailer").forEach(btn => {
+  btn.addEventListener("click", function () {
+    const videoUrl = this.getAttribute("data-video");
+    const trailerIframe = document.getElementById("trailerVideo");
+    trailerIframe.src = videoUrl;
+
+    const trailerModal = new bootstrap.Modal(document.getElementById("trailerModal"));
+    trailerModal.show();
+
+    // Clear iframe when modal is closed
+    document.getElementById("trailerModal").addEventListener("hidden.bs.modal", function () {
+      trailerIframe.src = "";
+    });
+  });
+});
+
 
   const bookingForm = document.getElementById("bookingForm");
   if (bookingForm) {
