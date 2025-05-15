@@ -49,6 +49,22 @@ body {
   color: white;
 }
 
+.movie-carousel-wrapper {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.movie-carousel {
+  display: flex;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+.movie-carousel .movie-card {
+  min-width: 180px;
+  flex-shrink: 0;
+}
+
 .movie-card {
   position: relative;
   overflow: hidden;
