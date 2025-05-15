@@ -33,6 +33,52 @@ body {
   background-color: #ff5e2e;
 }
 
+.movie-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.movie-card img {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+.movie-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 17, 17, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.movie-card:hover .movie-overlay {
+  opacity: 1;
+}
+
+.movie-overlay button {
+  margin: 5px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  background-color: #e94e1b;
+  transition: background-color 0.3s;
+}
+
+.movie-overlay button:hover {
+  background-color: #ff5e2e;
+}
+ 
 .container {
   max-width: 1440px;
   margin: 0 auto;
