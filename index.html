@@ -82,7 +82,7 @@
       <div class="movie-card">
         <a href="Movies/Jumbo.html"><img src="Asset/JUMBO.jpg" alt="Jumbo" class="img-fluid"></a>
         <div class="movie-overlay">
-          <button onclick="alert('https://www.youtube.com/embed/3emBvq5Xjqk')">🎬 Lihat Trailer</button>
+          <button class="btn-trailer" data-video="https://www.youtube.com/embed/3emBvq5Xjqk">🎬 Lihat Trailer</button>
           <a href="Movies/Jumbo.html" class="btn-book" target="_blank">🎟️ Beli Tiket</a>
         </div>
       </div>
@@ -91,7 +91,7 @@
       <div class="movie-card">
         <a href="Movies/Captain_America_Civil_War.html"><img src="https://upload.wikimedia.org/wikipedia/en/5/53/Captain_America_Civil_War_poster.jpg" alt="Captain America" class="img-fluid"></a>
         <div class="movie-overlay">
-          <button onclick="alert('https://www.youtube.com/embed/9ix7TUGVYIo')">🎬 Lihat Trailer</button>
+          <button class="btn-trailer" data-video="https://www.youtube.com/embed/9ix7TUGVYIo">🎬 Lihat Trailer</button>
           <a href="Movies/Captain_America_Civil_War.html" class="btn-book" data-title="Captain America">🎟️ Beli Tiket</button>
         </div>
       </div>
@@ -134,6 +134,22 @@
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="trailerModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="trailerModalLabel">Trailer</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="ratio ratio-16x9">
+          <iframe id="trailerVideo" src="" title="YouTube video" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
   <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
