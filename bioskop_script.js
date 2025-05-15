@@ -20,11 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  button.addEventListener("click", () => {
-  const title = button.getAttribute("data-title");
-  ...
-});
-
   document.querySelectorAll(".btn-trailer").forEach(btn => {
   btn.addEventListener("click", function () {
     const videoUrl = this.getAttribute("data-video");
