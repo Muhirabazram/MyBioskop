@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
       wrap: true
     });
   }
-
+  
   const bookButtons = document.querySelectorAll(".btn-book");
 
   bookButtons.forEach((button) => {
@@ -36,7 +36,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+const carousel = document.getElementById("movieCarousel");
+if (carousel) {
+  document.querySelector(".carousel-arrow.left").addEventListener("click", () => {
+    carousel.scrollBy({ left: -300, behavior: 'smooth' });
+  });
+  document.querySelector(".carousel-arrow.right").addEventListener("click", () => {
+    carousel.scrollBy({ left: 300, behavior: 'smooth' });
+  });
+}
+  
 
+  
   const bookingForm = document.getElementById("bookingForm");
   if (bookingForm) {
     bookingForm.addEventListener("submit", (e) => {
