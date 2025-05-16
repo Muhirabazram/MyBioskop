@@ -36,17 +36,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const movieCarousel = document.getElementById("movieCarousel");
-if (movieCarousel) {
-  document.querySelector(".carousel-arrow.left").addEventListener("click", () => {
-    movieCarousel.scrollBy({ left: -300, behavior: 'smooth' });
+document.querySelectorAll(".carousel-arrow").forEach(button => {
+  button.addEventListener("click", () => {
+    const targetId = button.getAttribute("data-target");
+    const carousel = document.getElementById(targetId);
+    if (carousel) {
+      const direction = button.classList.contains("left") ? -300 : 300;
+      carousel.scrollBy({ left: direction, behavior: 'smooth' });
+    }
   });
-  document.querySelector(".carousel-arrow.right").addEventListener("click", () => {
-    movieCarousel.scrollBy({ left: 300, behavior: 'smooth' });
-  });
-}
-
-  
+});
 
   
   const bookingForm = document.getElementById("bookingForm");
