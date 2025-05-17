@@ -59,6 +59,13 @@
   </style>
 </head>
 <body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e94e1b;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MyBioskop</a>
+    </div>
+  </nav>
+
   <div class="container my-5">
     <div class="booking-card mx-auto" style="max-width: 600px;">
       <h3 class="text-center text-danger mb-4">Booking Tiket</h3>
@@ -81,14 +88,15 @@
         </div>
         <div class="mb-3">
           <label for="time" class="form-label">Jam Tayang</label>
-          <select id="time" class="form-select" required>
-            <option value="">Pilih Jam</option>
-            <option>10:00</option>
-            <option>13:00</option>
-            <option>16:00</option>
-            <option>19:00</option>
-            <option>21:00</option>
-          </select>
+          <input type="text" class="form-control" id="time" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="lokasi" class="form-label">Lokasi Bioskop</label>
+          <input type="text" class="form-control" id="lokasi" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="studio" class="form-label">Studio</label>
+          <input type="text" class="form-control" id="studio" readonly>
         </div>
         <div class="mb-3">
           <label for="seats" class="form-label">Jumlah Kursi</label>
@@ -104,13 +112,25 @@
   </footer>
 
   <script>
-    // Ambil judul film dari localStorage
+    // Ambil data dari localStorage dan tampilkan
     document.addEventListener("DOMContentLoaded", () => {
       const titleInput = document.getElementById("movieTitle");
+      const dateInput = document.getElementById("date");
+      const timeInput = document.getElementById("time");
+      const lokasiInput = document.getElementById("lokasi");
+      const studioInput = document.getElementById("studio");
+
       const savedTitle = localStorage.getItem("bookingMovie");
-      if (savedTitle) {
-        titleInput.value = savedTitle;
-      }
+      const savedDate = localStorage.getItem("bookingTanggal");
+      const savedTime = localStorage.getItem("bookingJam");
+      const savedLokasi = localStorage.getItem("bookingLokasi");
+      const savedStudio = localStorage.getItem("bookingStudio");
+
+      if (savedTitle) titleInput.value = savedTitle;
+      if (savedDate) dateInput.value = savedDate;
+      if (savedTime) timeInput.value = savedTime;
+      if (savedLokasi) lokasiInput.value = savedLokasi;
+      if (savedStudio) studioInput.value = savedStudio;
 
       document.getElementById("bookingPageForm").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -120,8 +140,10 @@
         const date = document.getElementById("date").value;
         const time = document.getElementById("time").value;
         const seats = document.getElementById("seats").value;
+        const lokasi = document.getElementById("lokasi").value;
+        const studio = document.getElementById("studio").value;
 
-        alert(`Tiket berhasil dipesan!\\n\\nFilm: ${movie}\\nNama: ${name}\\nEmail: ${email}\\nTanggal: ${date}\\nJam: ${time}\\nJumlah Kursi: ${seats}`);
+        alert(`Tiket berhasil dipesan!\n\nFilm: ${movie}\nNama: ${name}\nEmail: ${email}\nTanggal: ${date}\nJam: ${time}\nLokasi: ${lokasi}\nStudio: ${studio}\nJumlah Kursi: ${seats}`);
         e.target.reset();
       });
     });
