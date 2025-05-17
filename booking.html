@@ -38,181 +38,116 @@
 
 
 <style>
-    .schedule-option {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
+    body {
+      background-color: #f4f1e8;
     }
-    .schedule-option:hover,
-    .schedule-option.active {
-      border-color: #e94e1b;
-      background-color: #fff3f0;
+    .booking-card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      padding: 2rem;
     }
-    .schedule-option input[type="radio"] {
-      display: none;
-    }
-    .studio-group {
-      display: none;
-    }
-    .date-selector {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      margin-bottom: 2rem;
-    }
-    .date-option {
-      flex: 0 0 auto;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 10px 15px;
-      cursor: pointer;
-      text-align: center;
-      min-width: 100px;
-      background-color: #f8f9fa;
-    }
-    .date-option.active,
-    .date-option:hover {
+    .btn-primary {
       background-color: #e94e1b;
-      color: white;
-      border-color: #e94e1b;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #ff5e2e;
+    }
+    .form-label {
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
-  <div class="container my-5">
-    <h2 class="text-center text-danger mb-4">Pilih Jadwal Penayangan</h2>
 
-    <div class="date-selector" id="dateSelector">
-      <!-- Tanggal-tanggal akan dimasukkan lewat JavaScript -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e94e1b;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MyBioskop</a>
     </div>
+  </nav>
 
-    <form id="scheduleForm">
-      <!-- Studio groups -->
-      <div class="studio-group" data-tanggal="2025-05-20">
-        <h4 class="mb-3">MyBioskop Jakarta (20 Mei 2025)</h4>
-        <div class="row">
-          <div class="col-md-4">
-            <label class="schedule-option">
-              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-20","lokasi":"MyBioskop Jakarta","studio":"Studio 1","jam":"13:30"}'>
-              <strong>Studio 1</strong><br>
-              Jam: 13:30
-            </label>
-            <label class="schedule-option">
-              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-20","lokasi":"MyBioskop Jakarta","studio":"Studio 1","jam":"15:00"}'>
-              <strong>Studio 1</strong><br>
-              Jam: 15:00
-            </label>
-          </div>
+  <div class="container my-5">
+    <div class="booking-card mx-auto" style="max-width: 600px;">
+      <h3 class="text-center text-danger mb-4">Booking Tiket</h3>
+      <form id="bookingPageForm">
+        <div class="mb-3">
+          <label for="movieTitle" class="form-label">Film</label>
+          <input type="text" class="form-control" id="movieTitle" readonly>
         </div>
-      </div>
-
-      <div class="studio-group" data-tanggal="2025-05-21">
-        <h4 class="mb-3">MyBioskop Bandung (21 Mei 2025)</h4>
-        <div class="row">
-          <div class="col-md-4">
-            <label class="schedule-option">
-              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-21","lokasi":"MyBioskop Bandung","studio":"Studio 1","jam":"14:00"}'>
-              <strong>Studio 1</strong><br>
-              Jam: 14:00
-            </label>
-            <label class="schedule-option">
-              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-21","lokasi":"MyBioskop Bandung","studio":"Studio 1","jam":"16:00"}'>
-              <strong>Studio 1</strong><br>
-              Jam: 16:00
-            </label>
-          </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nama</label>
+          <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda" required>
         </div>
-      </div>
-
-      <div class="studio-group" data-tanggal="2025-05-22">
-        <h4 class="mb-3">MyBioskop Surabaya (22 Mei 2025)</h4>
-        <div class="row">
-          <div class="col-md-4">
-            <label class="schedule-option">
-              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-22","lokasi":"MyBioskop Surabaya","studio":"Studio 1","jam":"12:30"}'>
-              <strong>Studio 1</strong><br>
-              Jam: 12:30
-            </label>
-            <label class="schedule-option">
-              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-22","lokasi":"MyBioskop Surabaya","studio":"Studio 1","jam":"17:00"}'>
-              <strong>Studio 1</strong><br>
-              Jam: 17:00
-            </label>
-          </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda" required>
         </div>
-      </div>
-
-      <div class="mt-4 p-3 border rounded bg-light" id="summaryBox" style="display:none;">
-        <h5>Ringkasan Pemilihan:</h5>
-        <p><strong>Tanggal:</strong> <span id="tanggalRingkasan"></span></p>
-        <p><strong>Lokasi:</strong> <span id="lokasiRingkasan"></span></p>
-        <p><strong>Studio:</strong> <span id="studioRingkasan"></span></p>
-        <p><strong>Jam:</strong> <span id="jamRingkasan"></span></p>
-        <a href="booking_film.html" class="btn btn-primary mt-3" id="pesanBtn">Pesan Sekarang</a>
-      </div>
-    </form>
+        <div class="mb-3">
+          <label for="date" class="form-label">Tanggal Tayang</label>
+          <input type="date" class="form-control" id="date" required>
+        </div>
+        <div class="mb-3">
+          <label for="time" class="form-label">Jam Tayang</label>
+          <input type="text" class="form-control" id="time" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="lokasi" class="form-label">Lokasi Bioskop</label>
+          <input type="text" class="form-control" id="lokasi" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="studio" class="form-label">Studio</label>
+          <input type="text" class="form-control" id="studio" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="seats" class="form-label">Jumlah Kursi</label>
+          <input type="number" class="form-control" id="seats" min="1" max="10" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Pesan Tiket</button>
+      </form>
+    </div>
   </div>
 
+  <footer class="text-center text-white py-3 mt-5" style="background-color: #e94e1b;">
+    <p>&copy; 2025 MyBioskop</p>
+  </footer>
+
   <script>
-    const options = document.querySelectorAll('input[name="jadwal"]');
-    const summaryBox = document.getElementById('summaryBox');
-    const lokasiEl = document.getElementById('lokasiRingkasan');
-    const studioEl = document.getElementById('studioRingkasan');
-    const jamEl = document.getElementById('jamRingkasan');
-    const tanggalEl = document.getElementById('tanggalRingkasan');
+    // Ambil data dari localStorage dan tampilkan
+    document.addEventListener("DOMContentLoaded", () => {
+      const titleInput = document.getElementById("movieTitle");
+      const dateInput = document.getElementById("date");
+      const timeInput = document.getElementById("time");
+      const lokasiInput = document.getElementById("lokasi");
+      const studioInput = document.getElementById("studio");
 
-    options.forEach(opt => {
-      opt.addEventListener('change', function() {
-        const data = JSON.parse(this.value);
-        lokasiEl.textContent = data.lokasi;
-        studioEl.textContent = data.studio;
-        jamEl.textContent = data.jam;
-        tanggalEl.textContent = data.tanggal;
-        summaryBox.style.display = 'block';
+      const savedTitle = localStorage.getItem("bookingMovie");
+      const savedDate = localStorage.getItem("bookingTanggal");
+      const savedTime = localStorage.getItem("bookingJam");
+      const savedLokasi = localStorage.getItem("bookingLokasi");
+      const savedStudio = localStorage.getItem("bookingStudio");
 
-        localStorage.setItem('bookingTanggal', data.tanggal);
-        localStorage.setItem('bookingLokasi', data.lokasi);
-        localStorage.setItem('bookingStudio', data.studio);
-        localStorage.setItem('bookingJam', data.jam);
+      if (savedTitle) titleInput.value = savedTitle;
+      if (savedDate) dateInput.value = savedDate;
+      if (savedTime) timeInput.value = savedTime;
+      if (savedLokasi) lokasiInput.value = savedLokasi;
+      if (savedStudio) studioInput.value = savedStudio;
 
-        document.querySelectorAll('.schedule-option').forEach(opt => opt.classList.remove('active'));
-        this.closest('.schedule-option').classList.add('active');
+      document.getElementById("bookingPageForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const movie = document.getElementById("movieTitle").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const seats = document.getElementById("seats").value;
+        const lokasi = document.getElementById("lokasi").value;
+        const studio = document.getElementById("studio").value;
+
+        alert(`Tiket berhasil dipesan!\n\nFilm: ${movie}\nNama: ${name}\nEmail: ${email}\nTanggal: ${date}\nJam: ${time}\nLokasi: ${lokasi}\nStudio: ${studio}\nJumlah Kursi: ${seats}`);
+        e.target.reset();
       });
     });
-
-    const dateSelector = document.getElementById('dateSelector');
-    const today = new Date('2025-05-20');
-
-    for (let i = 0; i < 7; i++) {
-      const date = new Date(today);
-      date.setDate(date.getDate() + i);
-
-      const option = document.createElement('div');
-      const value = date.toISOString().split('T')[0];
-
-      option.classList.add('date-option');
-      option.setAttribute('data-value', value);
-      option.textContent = date.toLocaleDateString('id-ID', { weekday: 'short', day: 'numeric', month: 'short' });
-
-      option.addEventListener('click', () => {
-        document.querySelectorAll('.date-option').forEach(opt => opt.classList.remove('active'));
-        option.classList.add('active');
-
-        document.querySelectorAll('.studio-group').forEach(group => {
-          group.style.display = group.getAttribute('data-tanggal') === value ? 'block' : 'none';
-        });
-      });
-
-      dateSelector.appendChild(option);
-    }
-
-    // Pilih otomatis hari pertama
-    document.querySelector('.date-option')?.click();
   </script>
-  
-
 </body>
 </html>
