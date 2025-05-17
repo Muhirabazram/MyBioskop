@@ -36,7 +36,6 @@
     </div>
   </nav>  
   
-  
   <style>
     .schedule-option {
       border: 1px solid #ddd;
@@ -54,75 +53,99 @@
     .schedule-option input[type="radio"] {
       display: none;
     }
+    .studio-group {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <div class="container my-5">
     <h2 class="text-center text-danger mb-4">Pilih Jadwal Penayangan</h2>
+
+    <div class="mb-4">
+      <label for="filterTanggal" class="form-label">Pilih Tanggal</label>
+      <input type="date" id="filterTanggal" class="form-control" required>
+    </div>
+
     <form id="scheduleForm">
-      <h4 class="mb-3">MyBioskop Jakarta</h4>
-      <div class="row">
-        <div class="col-md-4">
-          <label class="schedule-option">
-            <input type="radio" name="jadwal" value='{"lokasi":"MyBioskop Jakarta","studio":"Studio 1","jam":"13:30"}'>
-            <strong>Studio 1</strong><br>
-            Jam: 13:30
-          </label>
-        </div>
-        <div class="col-md-4">
-          <label class="schedule-option">
-            <input type="radio" name="jadwal" value='{"lokasi":"MyBioskop Jakarta","studio":"Studio 2","jam":"16:00"}'>
-            <strong>Studio 2</strong><br>
-            Jam: 16:00
-          </label>
-        </div>
-        <div class="col-md-4">
-          <label class="schedule-option">
-            <input type="radio" name="jadwal" value='{"lokasi":"MyBioskop Jakarta","studio":"Studio 3","jam":"19:15"}'>
-            <strong>Studio 3</strong><br>
-            Jam: 19:15
-          </label>
+      <div class="studio-group" data-tanggal="2025-05-20">
+        <h4 class="mb-3">MyBioskop Jakarta (20 Mei 2025)</h4>
+        <div class="row">
+          <div class="col-md-4">
+            <label class="schedule-option">
+              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-20","lokasi":"MyBioskop Jakarta","studio":"Studio 1","jam":"13:30"}'>
+              <strong>Studio 1</strong><br>
+              Jam: 13:30
+            </label>
+            <label class="schedule-option">
+              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-20","lokasi":"MyBioskop Jakarta","studio":"Studio 1","jam":"15:00"}'>
+              <strong>Studio 1</strong><br>
+              Jam: 15:00
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label class="schedule-option">
+              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-20","lokasi":"MyBioskop Jakarta","studio":"Studio 2","jam":"16:00"}'>
+              <strong>Studio 2</strong><br>
+              Jam: 16:00
+            </label>
+            <label class="schedule-option">
+              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-20","lokasi":"MyBioskop Jakarta","studio":"Studio 2","jam":"18:00"}'>
+              <strong>Studio 2</strong><br>
+              Jam: 18:00
+            </label>
+          </div>
         </div>
       </div>
 
-      <h4 class="my-4">MyBioskop Bandung</h4>
-      <div class="row">
-        <div class="col-md-4">
-          <label class="schedule-option">
-            <input type="radio" name="jadwal" value='{"lokasi":"MyBioskop Bandung","studio":"Studio 1","jam":"14:00"}'>
-            <strong>Studio 1</strong><br>
-            Jam: 14:00
-          </label>
-        </div>
-        <div class="col-md-4">
-          <label class="schedule-option">
-            <input type="radio" name="jadwal" value='{"lokasi":"MyBioskop Bandung","studio":"Studio 2","jam":"17:00"}'>
-            <strong>Studio 2</strong><br>
-            Jam: 17:00
-          </label>
+      <div class="studio-group" data-tanggal="2025-05-21">
+        <h4 class="mb-3">MyBioskop Bandung (21 Mei 2025)</h4>
+        <div class="row">
+          <div class="col-md-4">
+            <label class="schedule-option">
+              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-21","lokasi":"MyBioskop Bandung","studio":"Studio 1","jam":"14:00"}'>
+              <strong>Studio 1</strong><br>
+              Jam: 14:00
+            </label>
+            <label class="schedule-option">
+              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-21","lokasi":"MyBioskop Bandung","studio":"Studio 1","jam":"16:00"}'>
+              <strong>Studio 1</strong><br>
+              Jam: 16:00
+            </label>
+          </div>
+          <div class="col-md-4">
+            <label class="schedule-option">
+              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-21","lokasi":"MyBioskop Bandung","studio":"Studio 2","jam":"17:00"}'>
+              <strong>Studio 2</strong><br>
+              Jam: 17:00
+            </label>
+            <label class="schedule-option">
+              <input type="radio" name="jadwal" value='{"tanggal":"2025-05-21","lokasi":"MyBioskop Bandung","studio":"Studio 2","jam":"19:30"}'>
+              <strong>Studio 2</strong><br>
+              Jam: 19:30
+            </label>
+          </div>
         </div>
       </div>
 
       <div class="mt-4 p-3 border rounded bg-light" id="summaryBox" style="display:none;">
         <h5>Ringkasan Pemilihan:</h5>
+        <p><strong>Tanggal:</strong> <span id="tanggalRingkasan"></span></p>
         <p><strong>Lokasi:</strong> <span id="lokasiRingkasan"></span></p>
         <p><strong>Studio:</strong> <span id="studioRingkasan"></span></p>
         <p><strong>Jam:</strong> <span id="jamRingkasan"></span></p>
-        <a href="booking_film.html" class="btn btn-primary mt-3" id="pesanBtn">Pesan Sekarang</a>
+        <a href="booking.html" class="btn btn-primary mt-3" id="pesanBtn">Pesan Sekarang</a>
       </div>
     </form>
   </div>
 
-  <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
-    <p>&copy; 2025 MovieSuper</p>
-  </footer>
-  
   <script>
     const options = document.querySelectorAll('input[name="jadwal"]');
     const summaryBox = document.getElementById('summaryBox');
     const lokasiEl = document.getElementById('lokasiRingkasan');
     const studioEl = document.getElementById('studioRingkasan');
     const jamEl = document.getElementById('jamRingkasan');
+    const tanggalEl = document.getElementById('tanggalRingkasan');
 
     options.forEach(opt => {
       opt.addEventListener('change', function() {
@@ -130,8 +153,10 @@
         lokasiEl.textContent = data.lokasi;
         studioEl.textContent = data.studio;
         jamEl.textContent = data.jam;
+        tanggalEl.textContent = data.tanggal;
         summaryBox.style.display = 'block';
 
+        localStorage.setItem('bookingTanggal', data.tanggal);
         localStorage.setItem('bookingLokasi', data.lokasi);
         localStorage.setItem('bookingStudio', data.studio);
         localStorage.setItem('bookingJam', data.jam);
@@ -140,6 +165,15 @@
         this.closest('.schedule-option').classList.add('active');
       });
     });
+
+    const filterTanggal = document.getElementById('filterTanggal');
+    filterTanggal.addEventListener('change', function () {
+      const selectedDate = this.value;
+      document.querySelectorAll('.studio-group').forEach(group => {
+        group.style.display = group.getAttribute('data-tanggal') === selectedDate ? 'block' : 'none';
+      });
+    });
   </script>
+  
 </body>
 </html>
