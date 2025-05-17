@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Tiket - MyBioskop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="bioskop_style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      background-color: #f4f1e8;
+    }
+    .booking-card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    .btn-primary {
+      background-color: #e94e1b;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #ff5e2e;
+    }
+    .form-label {
+      font-weight: 500;
+    }
+    .screen {
+      background: #ccc;
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .seating-chart {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: 10px;
+      justify-items: center;
+    }
+    .seat {
+      width: 40px;
+      height: 40px;
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .seat.selected {
+      background-color: #e94e1b;
+      color: #fff;
+    }
+    .seat.booked {
+      background-color: #999;
+      cursor: not-allowed;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e94e1b;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MyBioskop</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="booking-card mx-auto" style="max-width: 600px;">
+      <h3 class="text-center text-danger mb-4">Booking Tiket</h3>
+      <form id="bookingPageForm">
+        <div class="mb-3">
+          <label for="movieTitle" class="form-label">Film</label>
+          <input type="text" class="form-control" id="movieTitle" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nama</label>
+          <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda" required>
+        </div>
+        <div class="mb-3">
+          <label for="date" class="form-label">Tanggal Tayang</label>
+          <input type="date" class="form-control" id="date" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="time" class="form-label">Jam Tayang</label>
+          <input type="text" class="form-control" id="time" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="lokasi" class="form-label">Lokasi Bioskop</label>
+          <input type="text" class="form-control" id="lokasi" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="studio" class="form-label">Studio</label>
+          <input type="text" class="form-control" id="studio" readonly>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Pilih Kursi</label>
+          <div class="screen">SCREEN</div>
+          <div class="seating-chart" id="seatingChart"></div>
+          <input type="hidden" id="selectedSeats" name="selectedSeats">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Total Harga</label>
+          <input type="text" id="totalHarga" class="form-control" readonly>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Pesan Tiket</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-3 mt-5" style="background-color: #e94e1b;">
+    <p>&copy; 2025 MyBioskop</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const titleInput = document.getElementById("movieTitle");
+      const dateInput = document.getElementById("date");
+      const timeInput = document.getElementById("time");
+      const lokasiInput = document.getElementById("lokasi");
+      const studioInput = document.getElementById("studio");
+      const selectedSeatsInput = document.getElementById("selectedSeats");
+      const totalHargaInput = document.getElementById("totalHarga");
+
+      const hargaPerKursi = 50000;
+
+      const savedTitle = localStorage.getItem("bookingMovie");
+      const savedDate = localStorage.getItem("bookingTanggal");
+      const savedTime = localStorage.getItem("bookingJam");
+      const savedLokasi = localStorage.getItem("bookingLokasi");
+      const savedStudio = localStorage.getItem("bookingStudio");
+
+      if (savedTitle) titleInput.value = savedTitle;
+      if (savedDate) dateInput.value = savedDate;
+      if (savedTime) timeInput.value = savedTime;
+      if (savedLokasi) lokasiInput.value = savedLokasi;
+      if (savedStudio) studioInput.value = savedStudio;
+
+      const chart = document.getElementById("seatingChart");
+      const rows = ["A", "B", "C", "D", "E"];
+      const cols = 9;
+      const bookedSeats = ["B3", "C5", "D7"];
+
+      function updateSelectedSeats() {
+        const selected = Array.from(document.querySelectorAll(".seat.selected"))
+          .map(s => s.textContent);
+        selectedSeatsInput.value = selected.join(", ");
+        totalHargaInput.value = selected.length > 0 ? `Rp ${(selected.length * hargaPerKursi).toLocaleString('id-ID')}` : "";
+      }
+
+      rows.forEach(row => {
+        for (let i = 1; i <= cols; i++) {
+          const seatCode = `${row}${i}`;
+          const seat = document.createElement("div");
+          seat.classList.add("seat");
+          seat.textContent = seatCode;
+
+          if (bookedSeats.includes(seatCode)) {
+            seat.classList.add("booked");
+          } else {
+            seat.addEventListener("click", () => {
+              seat.classList.toggle("selected");
+              updateSelectedSeats();
+            });
+          }
+
+          chart.appendChild(seat);
+        }
+      });
+
+      document.getElementById("bookingPageForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const movie = document.getElementById("movieTitle").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const lokasi = document.getElementById("lokasi").value;
+        const studio = document.getElementById("studio").value;
+        const seats = selectedSeatsInput.value;
+        const total = totalHargaInput.value;
+
+        if (!seats) {
+          alert("Silakan pilih minimal satu kursi.");
+          return;
+        }
+
+        alert(`Tiket berhasil dipesan!\n\nFilm: ${movie}\nNama: ${name}\nEmail: ${email}\nTanggal: ${date}\nJam: ${time}\nLokasi: ${lokasi}\nStudio: ${studio}\nKursi: ${seats}\nTotal Harga: ${total}`);
+        e.target.reset();
+        totalHargaInput.value = "";
+        document.querySelectorAll(".seat").forEach(seat => seat.classList.remove("selected"));
+      });
+    });
+  </script>
+</body>
+</html>
