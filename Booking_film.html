@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Booking Tiket - MyBioskop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="bioskop_style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    body {
+      background-color: #f4f1e8;
+    }
+    .booking-card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    .btn-primary {
+      background-color: #e94e1b;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #ff5e2e;
+    }
+    .form-label {
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e94e1b;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MyBioskop</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="booking-card mx-auto" style="max-width: 600px;">
+      <h3 class="text-center text-danger mb-4">Booking Tiket</h3>
+      <form id="bookingPageForm">
+        <div class="mb-3">
+          <label for="movieTitle" class="form-label">Film</label>
+          <input type="text" class="form-control" id="movieTitle" readonly>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Nama</label>
+          <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda" required>
+        </div>
+        <div class="mb-3">
+          <label for="date" class="form-label">Tanggal Tayang</label>
+          <input type="date" class="form-control" id="date" required>
+        </div>
+        <div class="mb-3">
+          <label for="time" class="form-label">Jam Tayang</label>
+          <select id="time" class="form-select" required>
+            <option value="">Pilih Jam</option>
+            <option>10:00</option>
+            <option>13:00</option>
+            <option>16:00</option>
+            <option>19:00</option>
+            <option>21:00</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="seats" class="form-label">Jumlah Kursi</label>
+          <input type="number" class="form-control" id="seats" min="1" max="10" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Pesan Tiket</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-3 mt-5" style="background-color: #e94e1b;">
+    <p>&copy; 2025 MyBioskop</p>
+  </footer>
+
+  <script>
+    // Ambil judul film dari localStorage
+    document.addEventListener("DOMContentLoaded", () => {
+      const titleInput = document.getElementById("movieTitle");
+      const savedTitle = localStorage.getItem("bookingMovie");
+      if (savedTitle) {
+        titleInput.value = savedTitle;
+      }
+
+      document.getElementById("bookingPageForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const movie = document.getElementById("movieTitle").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const seats = document.getElementById("seats").value;
+
+        alert(`Tiket berhasil dipesan!\\n\\nFilm: ${movie}\\nNama: ${name}\\nEmail: ${email}\\nTanggal: ${date}\\nJam: ${time}\\nJumlah Kursi: ${seats}`);
+        e.target.reset();
+      });
+    });
+  </script>
+</body>
+</html>
