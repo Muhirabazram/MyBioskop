@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pilih Jadwal Tayang</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .schedule-option {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .schedule-option:hover,
+    .schedule-option.active {
+      border-color: #e94e1b;
+      background-color: #fff3f0;
+    }
+    .schedule-option input[type="radio"] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <h2 class="text-center text-danger mb-4">Pilih Jadwal Penayangan</h2>
+    <form id="scheduleForm">
+      <h4 class="mb-3">MyBioskop Jakarta</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <label class="schedule-option">
+            <input type="radio" name="jadwal" value='{"lokasi":"MyBioskop Jakarta","studio":"Studio 1","jam":"13:30"}'>
+            <strong>Studio 1</strong><br>
+            Jam: 13:30
+          </label>
+        </div>
+        <div class="col-md-4">
+          <label class="schedule-option">
+            <input type="radio" name="jadwal" value='{"lokasi":"MyBioskop Jakarta","studio":"Studio 2","jam":"16:00"}'>
+            <strong>Studio 2</strong><br>
+            Jam: 16:00
+          </label>
+        </div>
+        <div class="col-md-4">
+          <label class="schedule-option">
+            <input type="radio" name="jadwal" value='{"lokasi":"MyBioskop Jakarta","studio":"Studio 3","jam":"19:15"}'>
+            <strong>Studio 3</strong><br>
+            Jam: 19:15
+          </label>
+        </div>
+      </div>
+
+      <h4 class="my-4">MyBioskop Bandung</h4>
+      <div class="row">
+        <div class="col-md-4">
+          <label class="schedule-option">
+            <input type="radio" name="jadwal" value='{"lokasi":"MyBioskop Bandung","studio":"Studio 1","jam":"14:00"}'>
+            <strong>Studio 1</strong><br>
+            Jam: 14:00
+          </label>
+        </div>
+        <div class="col-md-4">
+          <label class="schedule-option">
+            <input type="radio" name="jadwal" value='{"lokasi":"MyBioskop Bandung","studio":"Studio 2","jam":"17:00"}'>
+            <strong>Studio 2</strong><br>
+            Jam: 17:00
+          </label>
+        </div>
+      </div>
+
+      <div class="mt-4 p-3 border rounded bg-light" id="summaryBox" style="display:none;">
+        <h5>Ringkasan Pemilihan:</h5>
+        <p><strong>Lokasi:</strong> <span id="lokasiRingkasan"></span></p>
+        <p><strong>Studio:</strong> <span id="studioRingkasan"></span></p>
+        <p><strong>Jam:</strong> <span id="jamRingkasan"></span></p>
+        <a href="booking_film.html" class="btn btn-primary mt-3" id="pesanBtn">Pesan Sekarang</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const options = document.querySelectorAll('input[name="jadwal"]');
+    const summaryBox = document.getElementById('summaryBox');
+    const lokasiEl = document.getElementById('lokasiRingkasan');
+    const studioEl = document.getElementById('studioRingkasan');
+    const jamEl = document.getElementById('jamRingkasan');
+
+    options.forEach(opt => {
+      opt.addEventListener('change', function() {
+        const data = JSON.parse(this.value);
+        lokasiEl.textContent = data.lokasi;
+        studioEl.textContent = data.studio;
+        jamEl.textContent = data.jam;
+        summaryBox.style.display = 'block';
+
+        localStorage.setItem('bookingLokasi', data.lokasi);
+        localStorage.setItem('bookingStudio', data.studio);
+        localStorage.setItem('bookingJam', data.jam);
+
+        document.querySelectorAll('.schedule-option').forEach(opt => opt.classList.remove('active'));
+        this.closest('.schedule-option').classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
