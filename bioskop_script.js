@@ -1,48 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Untuk banner carousel utama (Bootstrap)
   const carousel = document.querySelector("#carouselBanner");
   if (carousel) {
-    const bsCarousel = new bootstrap.Carousel(carousel, {
+    new bootstrap.Carousel(carousel, {
       interval: 4000,
       ride: 'carousel',
       pause: false,
       wrap: true
     });
   }
-  
-  const bookButtons = document.querySelectorAll(".btn-book");
 
-  bookButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const title = button.getAttribute("data-title");
-      const modal = new bootstrap.Modal(document.getElementById("bookingModal"));
-      document.getElementById("modalMovieTitle").textContent = title;
-      modal.show();
-    });
-  });
-
+  // Untuk tombol "Lihat Trailer"
   document.querySelectorAll(".btn-trailer").forEach(btn => {
-  btn.addEventListener("click", function () {
-    const videoUrl = this.getAttribute("data-video");
-    const trailerIframe = document.getElementById("trailerVideo");
-    trailerIframe.src = videoUrl;
+    btn.addEventListener("click", function () {
+      const videoUrl = this.getAttribute("data-video");
+      const trailerIframe = document.getElementById("trailerVideo");
+      trailerIframe.src = videoUrl + "?autoplay=1";
 
-    const trailerModal = new bootstrap.Modal(document.getElementById("trailerModal"));
-    trailerModal.show();
-
-    // Clear iframe when modal is closed
-    document.getElementById("trailerModal").addEventListener("hidden.bs.modal", function () {
-      trailerIframe.src = "";
+      const trailerModal = new bootstrap.Modal(document.getElementById("trailerModal"));
+      trailerModal.show();
     });
   });
-});
 
-document.querySelectorAll(".carousel-arrow").forEach(button => {
-  button.addEventListener("click", () => {
-    const targetId = button.getAttribute("data-target");
-    const carousel = document.getElementById(targetId);
-    if (carousel) {
-      const direction = button.classList.contains("left") ? -300 : 300;
-      carousel.scrollBy({ left: direction, behavior: 'smooth' });
-    }
+  // Clear iframe saat modal trailer ditutup (hanya daftar sekali)
+  const trailerModalEl = document.getElementById("trailerModal");
+  if (trailerModalEl) {
+    trailerModalEl.addEventListener("hidden.bs.modal", function () {
+      document.getElementById("trailerVideo").src = "";
+    });
+  }
+
+  // Untuk arrow carousel custom
+  document.querySelectorAll(".carousel-arrow").forEach(button => {
+    button.addEventListener("click", () => {
+      const targetId = button.getAttribute("data-target");
+      const carousel = document.getElementById(targetId);
+      if (carousel) {
+        const direction = button.classList.contains("left") ? -carousel.offsetWidth : carousel.offsetWidth;
+        carousel.scrollBy({ left: direction, behavior: 'smooth' });
+      }
+    });
   });
 });
