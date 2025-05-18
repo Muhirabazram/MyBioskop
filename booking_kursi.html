@@ -59,6 +59,17 @@
       cursor: not-allowed;
       color: #fff;
     }
+    .seating-wrapper {
+      overflow-x: auto;
+      width: 100%;
+    }
+    .seating-chart {
+      display: grid;
+      grid-template-columns: repeat(9, 40px);
+      gap: 10px;
+      justify-content: start;
+      min-width: max-content;
+    } 
   </style>
 </head>
 <body>
@@ -75,7 +86,9 @@
       <form id="bookingPageForm">
         <div class="mb-3">
           <div class="screen">SCREEN</div>
-          <div class="seating-chart" id="seatingChart"></div>
+          <div class="seating-wrapper">
+            <div class="seating-chart" id="seatingChart"></div>
+          </div>
           <input type="hidden" id="selectedSeats" name="selectedSeats">
         </div>
 
