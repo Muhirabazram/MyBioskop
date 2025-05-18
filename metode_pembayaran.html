@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metode Pembayaran - MyBioskop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f1e8;
+    }
+    .payment-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    .btn-primary {
+      background-color: #e94e1b;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #ff5e2e;
+    }
+    .form-label {
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e94e1b;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MyBioskop</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="payment-card mx-auto" style="max-width: 600px;">
+      <h3 class="text-danger text-center mb-4">Metode Pembayaran</h3>
+      <form id="paymentForm">
+        <div class="mb-3">
+          <label class="form-label">Total Yang Harus Dibayar</label>
+          <input type="text" id="totalBayar" class="form-control" readonly>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Pilih Metode Pembayaran</label>
+          <select class="form-select" id="paymentMethod" required>
+            <option value="">-- Pilih Metode --</option>
+            <option value="Transfer Bank">Transfer Bank</option>
+            <option value="E-Wallet">E-Wallet</option>
+            <option value="Kartu Kredit">Kartu Kredit</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="rekening" class="form-label">Nomor Tujuan Pembayaran</label>
+          <input type="text" id="rekeningTujuan" class="form-control" readonly>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Lanjutkan Pembayaran</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-3" style="background-color: #e94e1b;">
+    <p>&copy; 2025 MyBioskop</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const totalInput = document.getElementById("totalBayar");
+      const rekeningTujuan = document.getElementById("rekeningTujuan");
+
+      // Ambil total dari localStorage
+      const total = localStorage.getItem("bookingTotal") || "Rp 0";
+      totalInput.value = total;
+
+      document.getElementById("paymentMethod").addEventListener("change", function () {
+        let value = this.value;
+        if (value === "Transfer Bank") {
+          rekeningTujuan.value = "BCA 1234567890 a/n MyBioskop";
+        } else if (value === "E-Wallet") {
+          rekeningTujuan.value = "Gopay / OVO / Dana: 0812-3456-7890";
+        } else if (value === "Kartu Kredit") {
+          rekeningTujuan.value = "Akan dialihkan ke halaman kartu kredit";
+        } else {
+          rekeningTujuan.value = "";
+        }
+      });
+
+      document.getElementById("paymentForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const metode = document.getElementById("paymentMethod").value;
+        if (!metode) {
+          alert("Silakan pilih metode pembayaran terlebih dahulu.");
+          return;
+        }
+        alert("Terima kasih! Silakan selesaikan pembayaran Anda.");
+        // Di sini bisa diarahkan ke halaman sukses atau QR pembayaran, dsb
+      });
+    });
+  </script>
+</body>
+</html>
