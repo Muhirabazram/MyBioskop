@@ -28,8 +28,8 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex me-2">
-          <input class="form-control me-2" type="search" placeholder="Search Movie/TV">
+        <form class="d-flex me-2" id="navbarSearchForm">
+          <input class="form-control me-2" type="search" id="navbarSearchInput" placeholder="Search Movie/TV">
           <button class="btn btn-light" type="submit">🔍</button>
         </form>
       </div>
@@ -253,5 +253,16 @@
   <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
     <p>&copy; 2025 MyBioskop</p>
   </footer>
+
+  <script>
+    document.getElementById("navbarSearchForm")?.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const keyword = document.getElementById("navbarSearchInput").value.trim();
+      if (keyword !== "") {
+        localStorage.setItem("navbarSearchQuery", keyword);
+        window.location.href = "search_result.html";
+      }
+    });
+  </script>
 </body>
 </html>
