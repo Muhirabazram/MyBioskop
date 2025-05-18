@@ -29,6 +29,9 @@
       margin-bottom: 30px;
       text-align: center;
     }
+    .form-control {
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
@@ -62,6 +65,8 @@
   <div class="container">
     <h2>Riwayat Transaksi Tiket</h2>
 
+    <input type="text" id="searchInput" class="form-control" placeholder="Cari berdasarkan nama atau judul film...">
+
     <div id="historyList"></div>
 
     <div class="text-center">
@@ -69,26 +74,27 @@
     </div>
   </div>
 
-  <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
-    <p>&copy; 2025 MyBioskop</p>
-  </footer>
-  
   <script>
     const historyList = document.getElementById("historyList");
     const clearBtn = document.getElementById("clearHistory");
+    const searchInput = document.getElementById("searchInput");
 
-    // Ambil data dari localStorage
-    const history = JSON.parse(localStorage.getItem("riwayatTransaksi")) || [];
+    let history = JSON.parse(localStorage.getItem("riwayatTransaksi")) || [];
 
-    function renderHistory() {
+    function renderHistory(filter = "") {
       historyList.innerHTML = "";
 
-      if (history.length === 0) {
-        historyList.innerHTML = "<p class='text-center'>Belum ada transaksi.</p>";
+      const filtered = history.filter(item =>
+        item.film.toLowerCase().includes(filter.toLowerCase()) ||
+        item.nama.toLowerCase().includes(filter.toLowerCase())
+      );
+
+      if (filtered.length === 0) {
+        historyList.innerHTML = "<p class='text-center'>Tidak ada hasil ditemukan.</p>";
         return;
       }
 
-      history.forEach((item, index) => {
+      filtered.forEach((item) => {
         const div = document.createElement("div");
         div.className = "transaction-card";
         div.innerHTML = `
@@ -106,8 +112,13 @@
     clearBtn.addEventListener("click", () => {
       if (confirm("Yakin ingin menghapus semua riwayat transaksi?")) {
         localStorage.removeItem("riwayatTransaksi");
+        history = [];
         renderHistory();
       }
+    });
+
+    searchInput.addEventListener("input", (e) => {
+      renderHistory(e.target.value);
     });
 
     renderHistory();
