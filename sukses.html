@@ -93,7 +93,7 @@
       <div class="value"><span id="ticketTanggal">-</span> <span id="ticketJam">-</span></div>
 
       <div class="label">AUDITORIUM</div>
-      <div class="value" id="ticketStudio">-</div>
+      <div class="value" id="ticketStudio">Studio -</div>
 
       <div class="label">SEATS</div>
       <div class="value" id="ticketKursi">-</div>
@@ -145,9 +145,10 @@
       get("ticketTotal").textContent = total;
       get("ticketLokasi").textContent = lokasi;
 
-      // Set QR code to redirect to index.html
-      const baseUrl = window.location.origin;
-      get("qrCodeImage").src = `https://api.qrserver.com/v1/create-qr-code/?data=${baseUrl}/MyBioskop/index.html&size=150x150`;
+      // Buat QR Code dengan data tiket secara ringkas
+      const qrData = `Film: ${movie}\nTanggal: ${tanggal}\nJam: ${jam}\nLokasi: ${lokasi}\nStudio: ${studio}\nKursi: ${kursi}\nTotal: ${total}`;
+      const encodedQR = encodeURIComponent(qrData);
+      get("qrCodeImage").src = `https://api.qrserver.com/v1/create-qr-code/?data=${encodedQR}&size=150x150`;
     });
   </script>
 </body>
