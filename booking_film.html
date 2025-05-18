@@ -98,7 +98,7 @@
           <label for="studio" class="form-label">Studio</label>
           <input type="text" class="form-control" id="studio" readonly>
         </div>
-        <a href="booking_kursi.html" class="btn btn-primary w-100">Pilih Kursi</a>
+        <button type="button" id="nextToSeats" class="btn btn-primary w-100">Pilih Kursi</button>
       </form>
     </div>
   </div>
@@ -142,6 +142,31 @@
         e.target.reset();
       });
     });
+
+    document.getElementById("nextToSeats").addEventListener("click", () => {
+  const name = document.getElementById("name");
+  const email = document.getElementById("email");
+
+  if (!name.value.trim()) {
+    name.focus();
+    alert("Harap isi nama terlebih dahulu.");
+    return;
+  }
+
+  if (!email.value.trim()) {
+    email.focus();
+    alert("Harap isi email terlebih dahulu.");
+    return;
+  }
+
+  // Simpan ke localStorage
+  localStorage.setItem("bookingNama", name.value);
+  localStorage.setItem("bookingEmail", email.value);
+
+  // Arahkan ke halaman pilih kursi
+  window.location.href = "booking_kursi.html";
+});
+    
   </script>
 </body>
 </html>
