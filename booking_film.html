@@ -138,29 +138,41 @@
     });
 
     document.getElementById("nextToSeats").addEventListener("click", () => {
-  const name = document.getElementById("name");
-  const email = document.getElementById("email");
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
 
-  if (!name.value.trim()) {
-    name.focus();
-    alert("Harap isi nama terlebih dahulu.");
-    return;
-  }
+      if (!name.value.trim()) {
+        name.focus();
+        alert("Harap isi nama terlebih dahulu.");
+        return;
+      }
 
-  if (!email.value.trim()) {
-    email.focus();
-    alert("Harap isi email terlebih dahulu.");
-    return;
-  }
-
-  // Simpan ke localStorage
-  localStorage.setItem("bookingNama", name.value);
-  localStorage.setItem("bookingEmail", email.value);
-
-  // Arahkan ke halaman pilih kursi
-  window.location.href = "booking_kursi.html";
-});
+      if (!email.value.trim()) {
+        email.focus();
+        alert("Harap isi email terlebih dahulu.");
+        return;
+      }
     
+      // Simpan ke localStorage
+      localStorage.setItem("bookingNama", name.value);
+      localStorage.setItem("bookingEmail", email.value);
+    
+      // Arahkan ke halaman pilih kursi
+      window.location.href = "booking_kursi.html";
+    });
+
+    const history = JSON.parse(localStorage.getItem("riwayatTransaksi")) || [];
+    history.push({
+      film: movie,
+      nama: nama,
+      tanggal: tanggal,
+      jam: jam,
+      lokasi: lokasi,
+      studio: studio,
+      kursi: kursi,
+      total: total
+    });
+    localStorage.setItem("riwayatTransaksi", JSON.stringify(history));
   </script>
 </body>
 </html>
