@@ -25,6 +25,17 @@
     .form-label {
       font-weight: 500;
     }
+    #qrCodeContainer {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+    #countdown {
+      font-weight: bold;
+      color: #dc3545;
+      margin-top: 10px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -59,7 +70,14 @@
           <input type="text" id="rekeningTujuan" class="form-control" readonly>
         </div>
 
-        <button type="submit" class="btn btn-primary w-100">Lanjutkan Pembayaran</button>
+        <div id="qrCodeContainer">
+          <p><strong>Scan QR Code Berikut:</strong></p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/QRIS_QR_Code_Example.png" alt="QRIS" class="img-fluid" style="max-width: 250px;">
+        </div>
+
+        <div id="countdown"></div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-4">Lanjutkan Pembayaran</button>
       </form>
     </div>
   </div>
@@ -72,33 +90,56 @@
     document.addEventListener("DOMContentLoaded", () => {
       const totalInput = document.getElementById("totalBayar");
       const rekeningTujuan = document.getElementById("rekeningTujuan");
+      const paymentMethod = document.getElementById("paymentMethod");
+      const qrContainer = document.getElementById("qrCodeContainer");
+      const countdownDisplay = document.getElementById("countdown");
 
-      // Ambil total dari localStorage
       const total = localStorage.getItem("bookingTotal") || "Rp 0";
       totalInput.value = total;
 
-      document.getElementById("paymentMethod").addEventListener("change", function () {
+      paymentMethod.addEventListener("change", function () {
         let value = this.value;
         if (value === "Transfer Bank") {
           rekeningTujuan.value = "BCA 1234567890 a/n MyBioskop";
+          qrContainer.style.display = "none";
         } else if (value === "E-Wallet") {
-          rekeningTujuan.value = "Gopay / OVO / Dana: 0812-3456-7890";
+          rekeningTujuan.value = "QRIS 0812-3456-7890";
+          qrContainer.style.display = "block";
         } else if (value === "Kartu Kredit") {
           rekeningTujuan.value = "Akan dialihkan ke halaman kartu kredit";
+          qrContainer.style.display = "none";
         } else {
           rekeningTujuan.value = "";
+          qrContainer.style.display = "none";
         }
       });
 
+      let countdownSeconds = 300; // 5 menit
+      const updateCountdown = () => {
+        const minutes = Math.floor(countdownSeconds / 60);
+        const seconds = countdownSeconds % 60;
+        countdownDisplay.textContent = `Batas waktu pembayaran: ${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+        if (countdownSeconds > 0) {
+          countdownSeconds--;
+          setTimeout(updateCountdown, 1000);
+        } else {
+          countdownDisplay.textContent = "Waktu pembayaran telah habis. Silakan mulai ulang pemesanan.";
+          document.getElementById("paymentForm").querySelector("button").disabled = true;
+        }
+      };
+      updateCountdown();
+
       document.getElementById("paymentForm").addEventListener("submit", (e) => {
         e.preventDefault();
-        const metode = document.getElementById("paymentMethod").value;
+        const metode = paymentMethod.value;
         if (!metode) {
           alert("Silakan pilih metode pembayaran terlebih dahulu.");
           return;
         }
-        alert("Terima kasih! Silakan selesaikan pembayaran Anda.");
-        // Di sini bisa diarahkan ke halaman sukses atau QR pembayaran, dsb
+        alert("Pembayaran dikonfirmasi. Anda akan diarahkan ke halaman sukses...");
+        setTimeout(() => {
+          window.location.href = "sukses.html";
+        }, 3000);
       });
     });
   </script>
