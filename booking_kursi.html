@@ -71,39 +71,9 @@
 
   <div class="container my-5">
     <div class="booking-card mx-auto" style="max-width: 600px;">
-      <h3 class="text-center text-danger mb-4">Booking Tiket</h3>
+      <h3 class="text-center text-danger mb-4">Pilih Kursi</h3>
       <form id="bookingPageForm">
         <div class="mb-3">
-          <label for="movieTitle" class="form-label">Film</label>
-          <input type="text" class="form-control" id="movieTitle" readonly>
-        </div>
-        <div class="mb-3">
-          <label for="name" class="form-label">Nama</label>
-          <input type="text" class="form-control" id="name" placeholder="Masukkan nama Anda" required>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda" required>
-        </div>
-        <div class="mb-3">
-          <label for="date" class="form-label">Tanggal Tayang</label>
-          <input type="date" class="form-control" id="date" readonly>
-        </div>
-        <div class="mb-3">
-          <label for="time" class="form-label">Jam Tayang</label>
-          <input type="text" class="form-control" id="time" readonly>
-        </div>
-        <div class="mb-3">
-          <label for="lokasi" class="form-label">Lokasi Bioskop</label>
-          <input type="text" class="form-control" id="lokasi" readonly>
-        </div>
-        <div class="mb-3">
-          <label for="studio" class="form-label">Studio</label>
-          <input type="text" class="form-control" id="studio" readonly>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label">Pilih Kursi</label>
           <div class="screen">SCREEN</div>
           <div class="seating-chart" id="seatingChart"></div>
           <input type="hidden" id="selectedSeats" name="selectedSeats">
@@ -125,27 +95,9 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      const titleInput = document.getElementById("movieTitle");
-      const dateInput = document.getElementById("date");
-      const timeInput = document.getElementById("time");
-      const lokasiInput = document.getElementById("lokasi");
-      const studioInput = document.getElementById("studio");
       const selectedSeatsInput = document.getElementById("selectedSeats");
       const totalHargaInput = document.getElementById("totalHarga");
-
       const hargaPerKursi = 50000;
-
-      const savedTitle = localStorage.getItem("bookingMovie");
-      const savedDate = localStorage.getItem("bookingTanggal");
-      const savedTime = localStorage.getItem("bookingJam");
-      const savedLokasi = localStorage.getItem("bookingLokasi");
-      const savedStudio = localStorage.getItem("bookingStudio");
-
-      if (savedTitle) titleInput.value = savedTitle;
-      if (savedDate) dateInput.value = savedDate;
-      if (savedTime) timeInput.value = savedTime;
-      if (savedLokasi) lokasiInput.value = savedLokasi;
-      if (savedStudio) studioInput.value = savedStudio;
 
       const chart = document.getElementById("seatingChart");
       const rows = ["A", "B", "C", "D", "E"];
@@ -181,13 +133,6 @@
 
       document.getElementById("bookingPageForm").addEventListener("submit", (e) => {
         e.preventDefault();
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const movie = document.getElementById("movieTitle").value;
-        const date = document.getElementById("date").value;
-        const time = document.getElementById("time").value;
-        const lokasi = document.getElementById("lokasi").value;
-        const studio = document.getElementById("studio").value;
         const seats = selectedSeatsInput.value;
         const total = totalHargaInput.value;
 
@@ -196,7 +141,7 @@
           return;
         }
 
-        alert(`Tiket berhasil dipesan!\n\nFilm: ${movie}\nNama: ${name}\nEmail: ${email}\nTanggal: ${date}\nJam: ${time}\nLokasi: ${lokasi}\nStudio: ${studio}\nKursi: ${seats}\nTotal Harga: ${total}`);
+        alert(`Tiket berhasil dipesan!\n\nKursi: ${seats}\nTotal Harga: ${total}`);
         e.target.reset();
         totalHargaInput.value = "";
         document.querySelectorAll(".seat").forEach(seat => seat.classList.remove("selected"));
