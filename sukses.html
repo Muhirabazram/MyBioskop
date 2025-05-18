@@ -93,13 +93,16 @@
       <div class="value"><span id="ticketTanggal">-</span> <span id="ticketJam">-</span></div>
 
       <div class="label">AUDITORIUM</div>
-      <div class="value">Studio <span id="ticketStudio">-</span></div>
+      <div class="value" id="ticketStudio">Studio -</div>
 
       <div class="label">SEATS</div>
       <div class="value" id="ticketKursi">-</div>
 
       <div class="label">TOTAL</div>
       <div class="value" id="ticketTotal">-</div>
+
+      <div class="label">LOKASI BIOSKOP</div>
+      <div class="value" id="ticketLokasi">-</div>
 
       <div class="label">NAMA</div>
       <div class="value" id="ticketNama">-</div>
@@ -108,11 +111,7 @@
       <div class="value" id="ticketEmail">-</div>
 
       <div class="barcode">
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=MyBioskop&size=150x150" alt="QR Code">
-      </div>
-
-      <div class="text-center mt-3">
-        <small><span id="ticketLokasiFull">MyBioskop</span></small>
+        <img id="qrCodeImage" src="" alt="QR Code">
       </div>
     </div>
 
@@ -126,18 +125,29 @@
     document.addEventListener("DOMContentLoaded", () => {
       const get = (id) => document.getElementById(id);
 
-      get("ticketFilm").textContent = localStorage.getItem("bookingMovie") || "-";
-      get("ticketNama").textContent = localStorage.getItem("bookingNama") || "-";
-      get("ticketEmail").textContent = localStorage.getItem("bookingEmail") || "-";
-      get("ticketTanggal").textContent = localStorage.getItem("bookingTanggal") || "-";
-      get("ticketJam").textContent = localStorage.getItem("bookingJam") || "-";
-      get("ticketLokasi").textContent = localStorage.getItem("bookingLokasi") || "-";
-      get("ticketStudio").textContent = localStorage.getItem("bookingStudio") || "-";
-      get("ticketKursi").textContent = localStorage.getItem("bookingKursi") || "-";
-      get("ticketTotal").textContent = localStorage.getItem("bookingTotal") || "-";
-
+      const movie = localStorage.getItem("bookingMovie") || "-";
+      const nama = localStorage.getItem("bookingNama") || "-";
+      const email = localStorage.getItem("bookingEmail") || "-";
+      const tanggal = localStorage.getItem("bookingTanggal") || "-";
+      const jam = localStorage.getItem("bookingJam") || "-";
       const lokasi = localStorage.getItem("bookingLokasi") || "-";
-      get("ticketLokasiFull").textContent = `MyBioskop ${lokasi}`;
+      const studio = localStorage.getItem("bookingStudio") || "-";
+      const kursi = localStorage.getItem("bookingKursi") || "-";
+      const total = localStorage.getItem("bookingTotal") || "-";
+
+      get("ticketFilm").textContent = movie;
+      get("ticketNama").textContent = nama;
+      get("ticketEmail").textContent = email;
+      get("ticketTanggal").textContent = tanggal;
+      get("ticketJam").textContent = jam;
+      get("ticketStudio").textContent = `Studio ${studio}`;
+      get("ticketKursi").textContent = kursi;
+      get("ticketTotal").textContent = total;
+      get("ticketLokasi").textContent = lokasi;
+
+      // Set QR code to redirect to index.html
+      const baseUrl = window.location.origin;
+      get("qrCodeImage").src = `https://api.qrserver.com/v1/create-qr-code/?data=${baseUrl}/index.html&size=150x150`;
     });
   </script>
 </body>
