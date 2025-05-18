@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Konfirmasi Pemesanan - MyBioskop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f1e8;
+    }
+    .summary-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+    .btn-primary {
+      background-color: #e94e1b;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #ff5e2e;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e94e1b;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MyBioskop</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="summary-card mx-auto" style="max-width: 600px;">
+      <h3 class="text-danger text-center mb-4">Konfirmasi Pemesanan</h3>
+      <ul class="list-group mb-4">
+        <li class="list-group-item"><strong>Film:</strong> <span id="summaryFilm"></span></li>
+        <li class="list-group-item"><strong>Nama:</strong> <span id="summaryNama"></span></li>
+        <li class="list-group-item"><strong>Email:</strong> <span id="summaryEmail"></span></li>
+        <li class="list-group-item"><strong>Tanggal Tayang:</strong> <span id="summaryTanggal"></span></li>
+        <li class="list-group-item"><strong>Jam Tayang:</strong> <span id="summaryJam"></span></li>
+        <li class="list-group-item"><strong>Lokasi Bioskop:</strong> <span id="summaryLokasi"></span></li>
+        <li class="list-group-item"><strong>Studio:</strong> <span id="summaryStudio"></span></li>
+        <li class="list-group-item"><strong>Kursi Dipesan:</strong> <span id="summaryKursi"></span></li>
+        <li class="list-group-item"><strong>Total Harga:</strong> <span id="summaryTotal"></span></li>
+      </ul>
+      <a href="metode_pembayaran.html" class="btn btn-primary w-100">Pesan Sekarang</a>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-3" style="background-color: #e94e1b;">
+    <p>&copy; 2025 MyBioskop</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("summaryFilm").textContent = localStorage.getItem("bookingMovie") || "-";
+      document.getElementById("summaryNama").textContent = localStorage.getItem("bookingNama") || "-";
+      document.getElementById("summaryEmail").textContent = localStorage.getItem("bookingEmail") || "-";
+      document.getElementById("summaryTanggal").textContent = localStorage.getItem("bookingTanggal") || "-";
+      document.getElementById("summaryJam").textContent = localStorage.getItem("bookingJam") || "-";
+      document.getElementById("summaryLokasi").textContent = localStorage.getItem("bookingLokasi") || "-";
+      document.getElementById("summaryStudio").textContent = localStorage.getItem("bookingStudio") || "-";
+      document.getElementById("summaryKursi").textContent = localStorage.getItem("bookingKursi") || "-";
+      document.getElementById("summaryTotal").textContent = localStorage.getItem("bookingTotal") || "-";
+    });
+  </script>
+
+</body>
+</html>
