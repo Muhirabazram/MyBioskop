@@ -161,7 +161,19 @@
       // Arahkan ke halaman konfirmasi
       window.location.href = "konfirmasi_pemesanan.html";
     });
+
+    const history = JSON.parse(localStorage.getItem("riwayatTransaksi")) || [];
+    history.push({
+      film: movie,
+      nama: nama,
+      tanggal: tanggal,
+      jam: jam,
+      lokasi: lokasi,
+      studio: studio,
+      kursi: kursi,
+      total: total
     });
+    localStorage.setItem("riwayatTransaksi", JSON.stringify(history));
   </script>
 </body>
 </html>
