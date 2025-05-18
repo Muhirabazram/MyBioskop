@@ -145,20 +145,22 @@
       });
 
       document.getElementById("bookingPageForm").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const seats = selectedSeatsInput.value;
-        const total = totalHargaInput.value;
+      e.preventDefault();
+      const seats = selectedSeatsInput.value;
+      const total = totalHargaInput.value;
 
-        if (!seats) {
-          alert("Silakan pilih minimal satu kursi.");
-          return;
-        }
+      if (!seats) {
+        alert("Silakan pilih minimal satu kursi.");
+        return;
+      }
 
-        alert(`Tiket berhasil dipesan!\n\nKursi: ${seats}\nTotal Harga: ${total}`);
-        e.target.reset();
-        totalHargaInput.value = "";
-        document.querySelectorAll(".seat").forEach(seat => seat.classList.remove("selected"));
-      });
+      // Simpan ke localStorage
+      localStorage.setItem("bookingKursi", seats);
+      localStorage.setItem("bookingTotal", total);
+
+      // Arahkan ke halaman konfirmasi
+      window.location.href = "konfirmasi_pemesanan.html";
+    });
     });
   </script>
 </body>
