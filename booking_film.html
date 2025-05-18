@@ -98,11 +98,7 @@
           <label for="studio" class="form-label">Studio</label>
           <input type="text" class="form-control" id="studio" readonly>
         </div>
-        <div class="mb-3">
-          <label for="seats" class="form-label">Jumlah Kursi</label>
-          <input type="number" class="form-control" id="seats" min="1" max="10" required>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Pesan Tiket</button>
+        <a href="booking_film.html" class="btn btn-primary w-100">Pilih Kursi</a>
       </form>
     </div>
   </div>
@@ -139,7 +135,6 @@
         const movie = document.getElementById("movieTitle").value;
         const date = document.getElementById("date").value;
         const time = document.getElementById("time").value;
-        const seats = document.getElementById("seats").value;
         const lokasi = document.getElementById("lokasi").value;
         const studio = document.getElementById("studio").value;
 
