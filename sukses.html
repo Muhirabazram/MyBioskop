@@ -11,7 +11,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       text-align: center;
     }
     .success-box {
@@ -32,9 +32,37 @@
     .btn-primary:hover {
       background-color: #ff5e2e;
     }
+    .ticket {
+      margin-top: 30px;
+      padding: 20px;
+      border: 2px dashed #e94e1b;
+      border-radius: 10px;
+      text-align: left;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ticket h4 {
+      text-align: center;
+      color: #e94e1b;
+      margin-bottom: 20px;
+    }
+    .ticket p {
+      margin: 5px 0;
+    }
     @media print {
-      .no-print {
-        display: none;
+      body * {
+        visibility: hidden;
+      }
+      #ticketArea, #ticketArea * {
+        visibility: visible;
+      }
+      #ticketArea {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
       }
     }
   </style>
@@ -46,11 +74,38 @@
     <h2 class="mt-3">Pemesanan Berhasil!</h2>
     <p>Terima kasih telah melakukan pemesanan di <strong>MyBioskop</strong>.<br>Kami telah mengirimkan detail tiket Anda ke email yang terdaftar.</p>
 
+    <div class="ticket" id="ticketArea">
+      <h4>🎟️ MyBioskop</h4>
+      <p><strong>Film:</strong> <span id="ticketFilm">-</span></p>
+      <p><strong>Nama:</strong> <span id="ticketNama">-</span></p>
+      <p><strong>Email:</strong> <span id="ticketEmail">-</span></p>
+      <p><strong>Tanggal:</strong> <span id="ticketTanggal">-</span></p>
+      <p><strong>Jam:</strong> <span id="ticketJam">-</span></p>
+      <p><strong>Lokasi:</strong> <span id="ticketLokasi">-</span></p>
+      <p><strong>Studio:</strong> <span id="ticketStudio">-</span></p>
+      <p><strong>Kursi:</strong> <span id="ticketKursi">-</span></p>
+      <p><strong>Total:</strong> <span id="ticketTotal">-</span></p>
+    </div>
+
     <div class="no-print">
       <button onclick="window.print()" class="btn btn-primary">Cetak Tiket</button>
       <a href="index.html" class="btn btn-primary ms-2">Kembali ke Beranda</a>
     </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById("ticketFilm").textContent = localStorage.getItem("bookingMovie") || "-";
+      document.getElementById("ticketNama").textContent = localStorage.getItem("bookingNama") || "-";
+      document.getElementById("ticketEmail").textContent = localStorage.getItem("bookingEmail") || "-";
+      document.getElementById("ticketTanggal").textContent = localStorage.getItem("bookingTanggal") || "-";
+      document.getElementById("ticketJam").textContent = localStorage.getItem("bookingJam") || "-";
+      document.getElementById("ticketLokasi").textContent = localStorage.getItem("bookingLokasi") || "-";
+      document.getElementById("ticketStudio").textContent = localStorage.getItem("bookingStudio") || "-";
+      document.getElementById("ticketKursi").textContent = localStorage.getItem("bookingKursi") || "-";
+      document.getElementById("ticketTotal").textContent = localStorage.getItem("bookingTotal") || "-";
+    });
+  </script>
 
 </body>
 </html>
