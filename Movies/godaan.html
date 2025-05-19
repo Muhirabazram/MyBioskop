@@ -3,21 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Godaan Setan yang Terkutuk | MovieSuper</title>
+  <title>MyBioskop - Godaan Setan yang Terkutuk</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="bioskop_style.css" />
+  <link rel="stylesheet" href="../bioskop_style.css" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../bioskop_script.js"></script>
 </head>
 <body>
-  <!-- Top bar with MyBioskop -->
-  <div class="bg-dark text-white py-1 text-center" style="font-size: 0.9rem;">
-    MyBioskop
-  </div>
-
-  <!-- Navbar utama -->
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ff6600;">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">MovieSuper</a>
+      <a class="navbar-brand" href="../index.html">MyBioskop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="../Movies.html">Now Playing</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Movies.html">Up Coming</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="../transaksi.html">Transaction</a></li>
+              <li><a class="dropdown-item" href="#">Categories</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex me-2">
+          <input class="form-control me-2" type="search" placeholder="Search Movie/TV" />
+          <button class="btn btn-light" type="submit">🔍</button>
+        </form>
+      </div>
     </div>
   </nav>
 
@@ -36,20 +51,13 @@
         <p><strong>Sutradara:</strong> Rocky Soraya</p>
         <p><strong>Pemeran:</strong> Prilly Latuconsina, Chicco Jerikho, Adinia Wirasti</p>
         <p><strong>Sinopsis:</strong> Seorang penulis muda pindah ke rumah tua peninggalan keluarganya untuk mencari inspirasi. Tanpa disadari, rumah itu menyimpan rahasia kutukan dari masa lalu yang mengundang kekuatan jahat untuk merasuki pikirannya. Di tengah godaan dan pengaruh setan yang semakin kuat, ia harus memilih antara menyelamatkan nyawanya atau kehilangan kewarasannya selamanya.</p>
-        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Godaan Setan yang Terkutuk">Pesan Tiket</a>
+        <a href="../booking.html" class="btn btn-primary" onclick="localStorage.setItem('bookingMovie', 'Godaan Setan yang Terkutuk')">Pesan Tiket</a>
       </div>
     </div>
   </div>
 
-  <footer class="text-center text-white py-4" style="background-color: #ff6600;">
-    <p>&copy; 2025 MovieSuper</p>
+  <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
+    <p>&copy; MyBioskop</p>
   </footer>
-
-  <script>
-    document.querySelector('[data-title]')?.addEventListener('click', function () {
-      const title = this.getAttribute('data-title');
-      localStorage.setItem('bookingMovie', title);
-    });
-  </script>
 </body>
 </html>
