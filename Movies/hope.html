@@ -20,8 +20,9 @@
   <div class="container my-5">
     <div class="row">
       <div class="col-md-6">
+        <!-- Bisa langsung pakai iframe atau modal trailer -->
         <div class="ratio ratio-16x9">
-          <iframe src="https://www.youtube.com/embed/dummy_hopeonstage_trailer" title="Trailer Hope on Stage" allowfullscreen></iframe>
+          <iframe id="mainTrailer" src="https://www.youtube.com/embed/dummy_hopeonstage_trailer" title="Trailer Hope on Stage" allowfullscreen></iframe>
         </div>
       </div>
       <div class="col-md-6">
@@ -32,7 +33,31 @@
         <p><strong>Sutradara:</strong> Rina Widjaja</p>
         <p><strong>Pemeran:</strong> Tara Basro, Vino G. Bastian, Reza Rahadian</p>
         <p><strong>Sinopsis:</strong> Sebuah kisah inspiratif tentang seorang penyanyi muda yang berjuang mengatasi berbagai rintangan demi mewujudkan impian panggung besarnya. Dengan dukungan teman dan keluarga, ia menemukan kekuatan dan harapan di atas panggung yang penuh tekanan.</p>
-        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Hope on Stage">Pesan Tiket</a>
+
+        <!-- Tombol Lihat Trailer -->
+        <button type="button" class="btn btn-danger mb-2" data-bs-toggle="modal" data-bs-target="#trailerModal" data-video="https://www.youtube.com/embed/dummy_hopeonstage_trailer">
+          🎬 Lihat Trailer
+        </button>
+
+        <!-- Tombol Pesan Tiket -->
+        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Hope on Stage">🎟️ Pesan Tiket</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Trailer -->
+  <div class="modal fade" id="trailerModal" tabindex="-1" aria-labelledby="trailerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white" id="trailerModalLabel">Trailer</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe id="trailerVideo" src="" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -42,9 +67,27 @@
   </footer>
 
   <script>
-    document.querySelector('[data-title]')?.addEventListener('click', function () {
-      const title = this.getAttribute('data-title');
-      localStorage.setItem('bookingMovie', title);
+    // Simpan judul film ke localStorage saat tombol Pesan Tiket diklik
+    document.querySelectorAll('[data-title]').forEach(el => {
+      el.addEventListener('click', function () {
+        const title = this.getAttribute('data-title');
+        localStorage.setItem('bookingMovie', title);
+      });
+    });
+
+    // Modal trailer: pas buka modal, set src iframe video supaya autoplay
+    const trailerModal = document.getElementById('trailerModal');
+    const trailerVideo = document.getElementById('trailerVideo');
+
+    trailerModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const videoUrl = button.getAttribute('data-video');
+      trailerVideo.src = videoUrl + "?autoplay=1&rel=0";
+    });
+
+    // Hapus src iframe saat modal ditutup supaya video berhenti
+    trailerModal.addEventListener('hidden.bs.modal', function () {
+      trailerVideo.src = "";
     });
   </script>
 </body>
