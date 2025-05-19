@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tenung | MovieSuper</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="bioskop_style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#4a148c;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MovieSuper</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/dummy_tenung_trailer" title="Trailer Tenung" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-danger">Tenung</h2>
+        <p><strong>Genre:</strong> Horor, Mistis, Thriller</p>
+        <p><strong>Rilis:</strong> 30 Oktober 2025</p>
+        <p><strong>Durasi:</strong> 1 jam 38 menit</p>
+        <p><strong>Sutradara:</strong> Dimas Santoso</p>
+        <p><strong>Pemeran:</strong> Chelsea Islan, Iqbaal Ramadhan, Jefri Nichol</p>
+        <p><strong>Sinopsis:</strong> Sepasang suami istri pindah ke rumah tua yang ternyata menyimpan misteri kelam. Kejadian-kejadian aneh mulai terjadi, dan mereka harus menghadapi sosok gaib yang dikenal sebagai Tenung. Ketegangan dan teror membayangi mereka saat mencoba mengungkap rahasia di balik rumah tersebut.</p>
+        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Tenung">Pesan Tiket</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-4" style="background-color: #4a148c;">
+    <p>&copy; 2025 MovieSuper</p>
+  </footer>
+
+  <script>
+    document.querySelector('[data-title]')?.addEventListener('click', function () {
+      const title = this.getAttribute('data-title');
+      localStorage.setItem('bookingMovie', title);
+    });
+  </script>
+</body>
+
+</html>
