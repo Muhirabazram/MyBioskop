@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Tahzan: Cinta, Dosa, Luka | MovieSuper</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="bioskop_style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MovieSuper</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/dummy_latanzan_trailer" title="Trailer La Tahzan: Cinta, Dosa, Luka" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-danger">La Tahzan: Cinta, Dosa, Luka</h2>
+        <p><strong>Genre:</strong> Drama, Religi, Romansa</p>
+        <p><strong>Rilis:</strong> 12 September 2025</p>
+        <p><strong>Rating:</strong> 8.4/10</p>
+        <p><strong>Sutradara:</strong> Anggy Umbara</p>
+        <p><strong>Pemeran:</strong> Laudya Cynthia Bella, Arifin Putra, Indah Permatasari</p>
+        <p><strong>Sinopsis:</strong> Ketika cinta bertabrakan dengan dosa dan luka masa lalu, seorang wanita harus memilih antara penyesalan yang membelenggu atau harapan yang membebaskan. Dalam perjalanan spiritual dan emosional, ia menemukan kekuatan untuk memaafkan, baik orang lain maupun dirinya sendiri. "La Tahzan" adalah kisah tentang kehilangan, pertobatan, dan cinta yang tak pernah menyerah.</p>
+        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="La Tahzan: Cinta, Dosa, Luka">Pesan Tiket</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-4" style="background-color: #b31b1b;">
+    <p>&copy; 2025 MovieSuper</p>
+  </footer>
+
+  <script>
+    document.querySelector('[data-title]')?.addEventListener('click', function () {
+      const title = this.getAttribute('data-title');
+      localStorage.setItem('bookingMovie', title);
+    });
+  </script>
+</body>
+</html>
