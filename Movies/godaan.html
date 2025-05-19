@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Godaan Setan yang Terkutuk | MovieSuper</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="bioskop_style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MovieSuper</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/dummy_trailer_url" title="Trailer Godaan Setan yang Terkutuk" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-danger">Godaan Setan yang Terkutuk</h2>
+        <p><strong>Genre:</strong> Horor, Thriller, Supranatural</p>
+        <p><strong>Rilis:</strong> 1 Juni 2025</p>
+        <p><strong>Rating:</strong> 8.2/10</p>
+        <p><strong>Sutradara:</strong> Rocky Soraya</p>
+        <p><strong>Pemeran:</strong> Prilly Latuconsina, Chicco Jerikho, Adinia Wirasti</p>
+        <p><strong>Sinopsis:</strong> Seorang penulis muda pindah ke rumah tua peninggalan keluarganya untuk mencari inspirasi. Tanpa disadari, rumah itu menyimpan rahasia kutukan dari masa lalu yang mengundang kekuatan jahat untuk merasuki pikirannya. Di tengah godaan dan pengaruh setan yang semakin kuat, ia harus memilih antara menyelamatkan nyawanya atau kehilangan kewarasannya selamanya.</p>
+        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Godaan Setan yang Terkutuk">Pesan Tiket</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
+    <p>&copy; 2025 MovieSuper</p>
+  </footer>
+
+  <script>
+    document.querySelector('[data-title]')?.addEventListener('click', function () {
+      const title = this.getAttribute('data-title');
+      localStorage.setItem('bookingMovie', title);
+    });
+  </script>
+</body>
+</html>
