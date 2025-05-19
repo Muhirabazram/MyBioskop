@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasil Pencarian - MyBioskop</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f1e8;
+    }
+    .container {
+      padding: 40px 0;
+    }
+    .card {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: none;
+      border-radius: 10px;
+    }
+    .card-img-top {
+      border-radius: 10px 10px 0 0;
+      height: 300px;
+      object-fit: cover;
+    }
+    .card-title {
+      color: #e94e1b;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="mb-4 text-center text-danger">Hasil Pencarian</h2>
+    <div id="searchResults" class="row g-4"></div>
+  </div>
+
+  <script>
+    const filmData = [
+      {
+        title: "Final Destination",
+        genre: "Horror",
+        image: "Asset/Final-Destination.jpg",
+        link: "Movies/Final_Destination.html"
+      },
+      {
+        title: "Jumbo",
+        genre: "Comedy",
+        image: "Asset/JUMBO.jpg",
+        link: "Movies/Jumbo.html"
+      },
+      {
+        title: "MISSION IMPOSSIBLE – THE FINAL RECKONING",
+        genre: "Action",
+        image: "Asset/MISSION_IMPOSSIBLE_–_THE_FINAL_RECKONING.jpg",
+        link: "Movies/MISSION_IMPOSSIBLE_–_THE_FINAL_RECKONING.html"
+      },
+      {
+        title: "Captain America Civil War",
+        genre: "Action",
+        image: "Asset/A-Miku-can't-sing.jpg",
+        link: "Movies/miku.html"
+      },
+      {
+        title: "Thunderbolts",
+        genre: "Superhero",
+        image: "Asset/Thunderbolts.jpg",
+        link: "Movies/thunder.html"
+      }
+    ];
+
+    const query = localStorage.getItem("navbarSearchQuery")?.toLowerCase() || "";
+    const resultContainer = document.getElementById("searchResults");
+
+    const results = filmData.filter(film => film.title.toLowerCase().includes(query));
+
+    if (results.length === 0) {
+      resultContainer.innerHTML = `<p class="text-center">Tidak ditemukan hasil untuk "${query}"</p>`;
+    } else {
+      results.forEach(film => {
+        const col = document.createElement("div");
+        col.className = "col-md-4";
+        col.innerHTML = `
+          <div class="card">
+            <img src="${film.image}" class="card-img-top" alt="${film.title}">
+            <div class="card-body">
+              <h5 class="card-title">${film.title}</h5>
+              <p class="card-text"><strong>Genre:</strong> ${film.genre}</p>
+              <a href="${film.link}" class="btn btn-primary">Pesan Tiket</a>
+            </div>
+          </div>
+        `;
+        resultContainer.appendChild(col);
+      });
+    }
+
+    localStorage.removeItem("navbarSearchQuery");
+  </script>
+</body>
+</html>
