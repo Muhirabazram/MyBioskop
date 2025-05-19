@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sayap-Sayap Patah 2 | MovieSuper</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="bioskop_style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MovieSuper</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/dummy_sayap2_trailer" title="Trailer Sayap-Sayap Patah 2" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-danger">Sayap-Sayap Patah 2</h2>
+        <p><strong>Genre:</strong> Drama, Aksi, Romansa</p>
+        <p><strong>Rilis:</strong> 20 Agustus 2025</p>
+        <p><strong>Rating:</strong> 8.6/10</p>
+        <p><strong>Sutradara:</strong> Rudi Soedjarwo</p>
+        <p><strong>Pemeran:</strong> Nicholas Saputra, Ariel Tatum, Donny Damara</p>
+        <p><strong>Sinopsis:</strong> Lanjutan dari kisah emosional "Sayap-Sayap Patah". Setelah tragedi yang mengguncang hidupnya, Nani mencoba membangun kembali masa depan dengan menjadi aktivis kemanusiaan. Namun masa lalu terus menghantuinya, hingga ia kembali terlibat dalam misi berbahaya yang menguji ketahanan fisik dan emosionalnya. Cinta, pengorbanan, dan keberanian berpadu dalam sekuel yang menggetarkan ini.</p>
+        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Sayap-Sayap Patah 2">Pesan Tiket</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-4" style="background-color: #e91b1b;">
+    <p>&copy; 2025 MovieSuper</p>
+  </footer>
+
+  <script>
+    document.querySelector('[data-title]')?.addEventListener('click', function () {
+      const title = this.getAttribute('data-title');
+      localStorage.setItem('bookingMovie', title);
+    });
+  </script>
+</body>
+</html>
