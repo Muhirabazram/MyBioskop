@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Angkara Murka | MovieSuper</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="bioskop_style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#e94e1b;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MovieSuper</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/xv6jJSOyW-g" title="Trailer Angkara Murka" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-danger">Angkara Murka</h2>
+        <p><strong>Genre:</strong> Horor, Misteri, Thriller Sosial</p>
+        <p><strong>Rilis:</strong> 22 Mei 2025</p>
+        <p><strong>Durasi:</strong> 1 jam 29 menit</p>
+        <p><strong>Sutradara:</strong> Eden Junjung</p>
+        <p><strong>Pemeran:</strong> Raihaanun, Aksara Dena, Simhala Avadana, Whani Darmawan, Rukman Rosadi</p>
+        <p><strong>Sinopsis:</strong> Ambar (Raihaanun), seorang ibu muda, berjuang mencari suaminya, Jarot (Aksara Dena), yang hilang secara misterius saat bekerja di tambang pasir. Dalam pencariannya, Ambar menghadapi teror gaib dan praktik eksploitasi ilegal yang dilakukan oleh penguasa tambang, Raden Broto (Whani Darmawan). Dibantu oleh Lukman (Simhala Avadana), seorang pekerja yang menentang kekuasaan Raden, mereka berusaha mengungkap kebenaran di balik hilangnya Jarot dan menghadapi kekuatan tak kasat mata yang menjaga tambang tersebut.</p>
+        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Angkara Murka">Pesan Tiket</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
+    <p>&copy; 2025 MovieSuper</p>
+  </footer>
+
+  <script>
+    document.querySelector('[data-title]')?.addEventListener('click', function () {
+      const title = this.getAttribute('data-title');
+      localStorage.setItem('bookingMovie', title);
+    });
+  </script>
+</body>
+
+</html>
