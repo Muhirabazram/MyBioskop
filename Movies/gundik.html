@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="ratio ratio-16x9">
-          <iframe src="https://www.youtube.com/embed/dummy_guundik_trailer" title="Trailer Guundik" allowfullscreen></iframe>
+          <iframe id="mainTrailer" src="https://www.youtube.com/embed/dummy_guundik_trailer" title="Trailer Guundik" allowfullscreen></iframe>
         </div>
       </div>
       <div class="col-md-6">
@@ -32,7 +32,30 @@
         <p><strong>Sutradara:</strong> Dian Nugraha</p>
         <p><strong>Pemeran:</strong> Nicholas Saputra, Marsha Timothy, Ario Bayu</p>
         <p><strong>Sinopsis:</strong> Guundik menceritakan tentang seorang pria yang dihantui masa lalunya sendiri, berusaha melarikan diri dari bayang-bayang kesalahan yang pernah dibuat. Konflik batin dan ketegangan psikologis menjadi inti cerita yang penuh dengan kejutan dan dramatisasi mendalam.</p>
+        
+        <!-- Tombol Trailer Tambahan -->
+        <button type="button" class="btn btn-danger mb-2" data-bs-toggle="modal" data-bs-target="#trailerModal" data-video="https://www.youtube.com/embed/dummy_guundik_trailer">
+          🎬 Lihat Trailer
+        </button>
+
         <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Guundik">Pesan Tiket</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Bootstrap untuk Trailer -->
+  <div class="modal fade" id="trailerModal" tabindex="-1" aria-labelledby="trailerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark">
+        <div class="modal-header border-0">
+          <h5 class="modal-title text-white" id="trailerModalLabel">Trailer</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="ratio ratio-16x9">
+            <iframe id="trailerVideo" src="" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -42,9 +65,26 @@
   </footer>
 
   <script>
-    document.querySelector('[data-title]')?.addEventListener('click', function () {
-      const title = this.getAttribute('data-title');
-      localStorage.setItem('bookingMovie', title);
+    // Simpan judul film ke localStorage saat klik tombol pesan tiket
+    document.querySelectorAll('[data-title]').forEach(el => {
+      el.addEventListener('click', function () {
+        const title = this.getAttribute('data-title');
+        localStorage.setItem('bookingMovie', title);
+      });
+    });
+
+    // Setup modal trailer Bootstrap agar iframe autoplay saat modal tampil
+    const trailerModal = document.getElementById('trailerModal');
+    const trailerVideo = document.getElementById('trailerVideo');
+
+    trailerModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget;
+      const videoUrl = button.getAttribute('data-video');
+      trailerVideo.src = videoUrl + "?autoplay=1&rel=0";
+    });
+
+    trailerModal.addEventListener('hidden.bs.modal', function () {
+      trailerVideo.src = "";
     });
   </script>
 </body>
