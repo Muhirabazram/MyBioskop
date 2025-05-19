@@ -4,16 +4,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Guundik | MovieSuper</title>
+  <title>Pembantaian Dukun Santet | MovieSuper</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="bioskop_style.css" />
+  <link rel="stylesheet" href="../bioskop_style.css" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#3b0a45;">
     <div class="container">
-      <a class="navbar-brand" href="index.html">MovieSuper</a>
+      <a class="navbar-brand" href="../index.html">MovieSuper</a>
     </div>
   </nav>
 
@@ -21,24 +21,23 @@
     <div class="row">
       <div class="col-md-6">
         <div class="ratio ratio-16x9">
-          <iframe id="mainTrailer" src="https://www.youtube.com/embed/dummy_guundik_trailer" title="Trailer Guundik" allowfullscreen></iframe>
+          <iframe id="mainTrailer" src="https://www.youtube.com/embed/W8FUcJbD270" title="Trailer Pembantaian Dukun Santet" allowfullscreen></iframe>
         </div>
       </div>
       <div class="col-md-6">
-        <h2 class="text-danger">Guundik</h2>
-        <p><strong>Genre:</strong> Thriller, Drama, Psikologis</p>
-        <p><strong>Rilis:</strong> 15 Januari 2026</p>
-        <p><strong>Durasi:</strong> 1 jam 50 menit</p>
-        <p><strong>Sutradara:</strong> Dian Nugraha</p>
-        <p><strong>Pemeran:</strong> Nicholas Saputra, Marsha Timothy, Ario Bayu</p>
-        <p><strong>Sinopsis:</strong> Guundik menceritakan tentang seorang pria yang dihantui masa lalunya sendiri, berusaha melarikan diri dari bayang-bayang kesalahan yang pernah dibuat. Konflik batin dan ketegangan psikologis menjadi inti cerita yang penuh dengan kejutan dan dramatisasi mendalam.</p>
-        
-        <!-- Tombol Trailer Tambahan -->
-        <button type="button" class="btn btn-danger mb-2" data-bs-toggle="modal" data-bs-target="#trailerModal" data-video="https://www.youtube.com/embed/dummy_guundik_trailer">
+        <h2 class="text-danger">Pembantaian Dukun Santet</h2>
+        <p><strong>Genre:</strong> Horor, Thriller</p>
+        <p><strong>Rilis:</strong> 31 Desember 2025</p>
+        <p><strong>Durasi:</strong> 1 jam 45 menit</p>
+        <p><strong>Sutradara:</strong> Agus Santoso</p>
+        <p><strong>Pemeran:</strong> Rina Nose, Deddy Mizwar, Tio Pakusadewo</p>
+        <p><strong>Sinopsis:</strong> Film ini menceritakan kisah menyeramkan tentang dukun santet yang membalas dendam kepada orang-orang yang mengusiknya. Penuh dengan adegan menegangkan dan misteri yang tak terpecahkan.</p>
+
+        <button type="button" class="btn btn-danger mb-2" data-bs-toggle="modal" data-bs-target="#trailerModal" data-video="https://www.youtube.com/embed/W8FUcJbD270">
           🎬 Lihat Trailer
         </button>
 
-        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Guundik">Pesan Tiket</a>
+        <a href="../index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Pembantaian Dukun Santet">🎟️ Beli Tiket</a>
       </div>
     </div>
   </div>
@@ -65,7 +64,6 @@
   </footer>
 
   <script>
-    // Simpan judul film ke localStorage saat klik tombol pesan tiket
     document.querySelectorAll('[data-title]').forEach(el => {
       el.addEventListener('click', function () {
         const title = this.getAttribute('data-title');
@@ -73,7 +71,6 @@
       });
     });
 
-    // Setup modal trailer Bootstrap agar iframe autoplay saat modal tampil
     const trailerModal = document.getElementById('trailerModal');
     const trailerVideo = document.getElementById('trailerVideo');
 
