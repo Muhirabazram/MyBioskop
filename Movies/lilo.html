@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lilo The Movie | MovieSuper</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="bioskop_style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#1e88e5;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MovieSuper</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/dummy_lilo_trailer" title="Trailer Lilo The Movie" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-danger">Lilo The Movie</h2>
+        <p><strong>Genre:</strong> Animasi, Petualangan, Keluarga</p>
+        <p><strong>Rilis:</strong> 20 November 2025</p>
+        <p><strong>Durasi:</strong> 1 jam 35 menit</p>
+        <p><strong>Sutradara:</strong> Maya Sari</p>
+        <p><strong>Pemeran:</strong> Pengisi suara: Adhisty Zara, Reza Rahadian</p>
+        <p><strong>Sinopsis:</strong> Lilo, seekor anak anjing yang ceria dan pemberani, berpetualang mencari keluarganya yang hilang di tengah hutan lebat. Dalam perjalanannya, Lilo bertemu dengan berbagai sahabat baru dan menghadapi berbagai rintangan yang mengajarkan arti keluarga dan keberanian.</p>
+        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Lilo The Movie">Pesan Tiket</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-4" style="background-color: #1e88e5;">
+    <p>&copy; 2025 MovieSuper</p>
+  </footer>
+
+  <script>
+    document.querySelector('[data-title]')?.addEventListener('click', function () {
+      const title = this.getAttribute('data-title');
+      localStorage.setItem('bookingMovie', title);
+    });
+  </script>
+</body>
+
+</html>
