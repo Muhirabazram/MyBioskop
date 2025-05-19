@@ -11,12 +11,14 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#4a148c;">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4a148c;">
     <div class="container">
       <a class="navbar-brand" href="index.html">MovieSuper</a>
     </div>
   </nav>
 
+  <!-- Content Section -->
   <div class="container my-5">
     <div class="row">
       <div class="col-md-6">
@@ -32,16 +34,20 @@
         <p><strong>Sutradara:</strong> Dimas Santoso</p>
         <p><strong>Pemeran:</strong> Chelsea Islan, Iqbaal Ramadhan, Jefri Nichol</p>
         <p><strong>Sinopsis:</strong> Sepasang suami istri pindah ke rumah tua yang ternyata menyimpan misteri kelam. Kejadian-kejadian aneh mulai terjadi, dan mereka harus menghadapi sosok gaib yang dikenal sebagai Tenung. Ketegangan dan teror membayangi mereka saat mencoba mengungkap rahasia di balik rumah tersebut.</p>
-        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Tenung">Pesan Tiket</a>
+
+        <!-- Pesan Tiket Button -->
+        <a href="index.html#bookingModal" class="btn" style="background-color: #4a148c; color: white;" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Tenung">Pesan Tiket</a>
       </div>
     </div>
   </div>
 
+  <!-- Footer -->
   <footer class="text-center text-white py-4" style="background-color: #4a148c;">
     <p>&copy; 2025 MovieSuper</p>
   </footer>
 
   <script>
+    // Simpan judul film ke localStorage saat tombol Pesan Tiket diklik
     document.querySelector('[data-title]')?.addEventListener('click', function () {
       const title = this.getAttribute('data-title');
       localStorage.setItem('bookingMovie', title);
