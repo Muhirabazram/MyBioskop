@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengepungan di Bukit Duri | MovieSuper</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="bioskop_style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">MovieSuper</a>
+    </div>
+  </nav>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://www.youtube.com/embed/dummy_bukitduri_trailer" title="Trailer Pengepungan di Bukit Duri" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h2 class="text-danger">Pengepungan di Bukit Duri</h2>
+        <p><strong>Genre:</strong> Aksi, Sejarah, Perang</p>
+        <p><strong>Rilis:</strong> 17 Agustus 2025</p>
+        <p><strong>Rating:</strong> 9.1/10</p>
+        <p><strong>Sutradara:</strong> Hanung Bramantyo</p>
+        <p><strong>Pemeran:</strong> Reza Rahadian, Chicco Jerikho, Putri Marino</p>
+        <p><strong>Sinopsis:</strong> Berdasarkan kisah nyata, film ini mengisahkan perjuangan sekelompok pejuang kemerdekaan yang mempertahankan wilayah Bukit Duri dari invasi militer kolonial. Dalam pengepungan selama 72 jam tanpa bantuan dari luar, mereka harus mempertaruhkan nyawa dan kehormatan demi mempertahankan kemerdekaan. Ketegangan, pengkhianatan, dan pengorbanan menjadi warna dalam pertempuran heroik ini.</p>
+        <a href="index.html#bookingModal" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Pengepungan di Bukit Duri">Pesan Tiket</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center text-white py-4" style="background-color: #1b2be9;">
+    <p>&copy; 2025 MovieSuper</p>
+  </footer>
+
+  <script>
+    document.querySelector('[data-title]')?.addEventListener('click', function () {
+      const title = this.getAttribute('data-title');
+      localStorage.setItem('bookingMovie', title);
+    });
+  </script>
+</body>
+</html>
