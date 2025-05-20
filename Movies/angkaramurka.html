@@ -1,37 +1,35 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Angkara Murka | MyBioskop</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="bioskop_style.css" />
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../bioskop_style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../bioskop_script.js"></script>
 </head>
-
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #e94e1b;">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">MyBioskop</a>
+      <a class="navbar-brand" href="../index.html">MyBioskop</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="Movies.html">Now Playing</a></li>
-          <li class="nav-item"><a class="nav-link" href="Movies.html">Up Coming</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../Movies.html">Now Playing</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Movies.html">Up Coming</a></li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="transaksi.html">Transaction</a></li>
-              <li><a class="dropdown-item" href="#">Categories</a></li>
+              <li><a class="dropdown-item" href="../transaksi.html">Transaction</a></li>
+              <li><a class="dropdown-item" href="../contact.html">Contact Us</a></li>
             </ul>
           </li>
         </ul>
         <form class="d-flex me-2">
-          <input class="form-control me-2" type="search" placeholder="Search Movie/TV" />
+          <input class="form-control me-2" type="search" placeholder="Search Movie/TV">
           <button class="btn btn-light" type="submit">🔍</button>
         </form>
       </div>
@@ -42,9 +40,8 @@
   <div class="container my-5">
     <div class="row">
       <div class="col-md-6">
-        <!-- Trailer -->
         <div class="ratio ratio-16x9">
-          <iframe src="https://www.youtube.com/embed/xv6jJSOyW-g" title="Trailer Angkara Murka" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/tFYKTuOFCiY" title="Trailer Angkara Murka" allowfullscreen></iframe>
         </div>
       </div>
       <div class="col-md-6">
@@ -55,9 +52,7 @@
         <p><strong>Sutradara:</strong> Eden Junjung</p>
         <p><strong>Pemeran:</strong> Raihaanun, Aksara Dena, Simhala Avadana, Whani Darmawan, Rukman Rosadi</p>
         <p><strong>Sinopsis:</strong> Ambar (Raihaanun), seorang ibu muda, berjuang mencari suaminya, Jarot (Aksara Dena), yang hilang secara misterius saat bekerja di tambang pasir. Dalam pencariannya, Ambar menghadapi teror gaib dan praktik eksploitasi ilegal yang dilakukan oleh penguasa tambang, Raden Broto (Whani Darmawan). Dibantu oleh Lukman (Simhala Avadana), seorang pekerja yang menentang kekuasaan Raden, mereka berusaha mengungkap kebenaran di balik hilangnya Jarot dan menghadapi kekuatan tak kasat mata yang menjaga tambang tersebut.</p>
-
-        <!-- Pesan Tiket Button (Oranye) -->
-        <a href="index.html#bookingModal" class="btn" style="background-color: #e94e1b; color: white;" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Angkara Murka">Pesan Tiket</a>
+        <a href="../booking.html" class="btn btn-primary" onclick="localStorage.setItem('bookingMovie', 'Angkara Murka')">Pesan Tiket</a>
       </div>
     </div>
   </div>
