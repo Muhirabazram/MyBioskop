@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tenung | MovieSuper</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="bioskop_style.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../bioskop_style.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../bioskop_script.js"></script>
 </head>
-
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4a148c;">
+  <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand" href="index.html">MovieSuper</a>
+      <a class="navbar-brand" href="../index.html">MyBioskop</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="../Movies.html">Now Playing</a></li>
+          <li class="nav-item"><a class="nav-link" href="../Movies.html">Up Coming</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="../transaksi.html">Transaction</a></li>
+              <li><a class="dropdown-item" href="../contact.html">Contact Us</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex me-2">
+          <input class="form-control me-2" type="search" placeholder="Search Movie/TV">
+          <button class="btn btn-light" type="submit">🔍</button>
+        </form>
+      </div>
     </div>
   </nav>
 
@@ -23,7 +42,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="ratio ratio-16x9">
-          <iframe src="https://www.youtube.com/embed/dummy_tenung_trailer" title="Trailer Tenung" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/mXpRvWihVgE" title="Trailer Tenung" allowfullscreen></iframe>
         </div>
       </div>
       <div class="col-md-6">
@@ -34,16 +53,14 @@
         <p><strong>Sutradara:</strong> Dimas Santoso</p>
         <p><strong>Pemeran:</strong> Chelsea Islan, Iqbaal Ramadhan, Jefri Nichol</p>
         <p><strong>Sinopsis:</strong> Sepasang suami istri pindah ke rumah tua yang ternyata menyimpan misteri kelam. Kejadian-kejadian aneh mulai terjadi, dan mereka harus menghadapi sosok gaib yang dikenal sebagai Tenung. Ketegangan dan teror membayangi mereka saat mencoba mengungkap rahasia di balik rumah tersebut.</p>
-
-        <!-- Pesan Tiket Button -->
-        <a href="index.html#bookingModal" class="btn" style="background-color: #4a148c; color: white;" data-bs-toggle="modal" data-bs-target="#bookingModal" data-title="Tenung">Pesan Tiket</a>
+        <a href="../booking.html" class="btn btn-primary" onclick="localStorage.setItem('bookingMovie', 'Tenung')">Pesan Tiket</a>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
-  <footer class="text-center text-white py-4" style="background-color: #4a148c;">
-    <p>&copy; 2025 MovieSuper</p>
+  <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
+    <p>&copy; MyBioskop</p>
   </footer>
 
   <script>
@@ -51,6 +68,15 @@
     document.querySelector('[data-title]')?.addEventListener('click', function () {
       const title = this.getAttribute('data-title');
       localStorage.setItem('bookingMovie', title);
+    });
+    
+    document.getElementById("navbarSearchForm")?.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const keyword = document.getElementById("navbarSearchInput").value.trim();
+      if (keyword !== "") {
+        localStorage.setItem("navbarSearchQuery", keyword);
+        window.location.href = "../search_result.html";
+      }
     });
   </script>
 </body>
