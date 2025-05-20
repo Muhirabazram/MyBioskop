@@ -24,7 +24,7 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="transaksi.html">Transaction</a></li>
-              <li><a class="dropdown-item" href="#">Categories</a></li>
+              <li><a class="dropdown-item" href="contact.html">Contact Us</a></li>
             </ul>
           </li>
         </ul>
@@ -245,16 +245,5 @@
   <footer class="text-center text-white py-4" style="background-color: #e94e1b;">
     <p>&copy; MyBioskop</p>
   </footer>
-
-  <script>
-    document.getElementById("navbarSearchForm")?.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const keyword = document.getElementById("navbarSearchInput").value.trim();
-      if (keyword !== "") {
-        localStorage.setItem("navbarSearchQuery", keyword);
-        window.location.href = "search_result.html";
-      }
-    });
-  </script>
 </body>
 </html>
