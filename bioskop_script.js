@@ -49,6 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const keyword = document.getElementById("navbarSearchInput").value.trim();
     if (keyword !== "") {
       localStorage.setItem("navbarSearchQuery", keyword);
-      window.location.href = "search_result.html";
+      window.location.href = "../search_result.html";
     }
   });
