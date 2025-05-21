@@ -42,13 +42,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
-
-
-  document.getElementById("navbarSearchForm")?.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const keyword = document.getElementById("navbarSearchInput").value.trim();
-    if (keyword !== "") {
-      localStorage.setItem("navbarSearchQuery", keyword);
-      window.location.href = "search_result.html";
-    }
-  });
