@@ -51,31 +51,36 @@
         title: "Final Destination",
         genre: "Horror",
         image: "Asset/Final-Destination.jpg",
-        link: "Movies/Final_Destination.html"
+        link: "Movies/Final_Destination.html",
+        trailer: "https://www.youtube.com/embed/xxxxxx"
       },
       {
         title: "Jumbo",
         genre: "Comedy",
         image: "Asset/JUMBO.jpg",
-        link: "Movies/Jumbo.html"
+        link: "Movies/Jumbo.html",
+        trailer: "https://www.youtube.com/embed/xxxxxx"
       },
       {
         title: "MISSION IMPOSSIBLE – THE FINAL RECKONING",
         genre: "Action",
         image: "Asset/MISSION_IMPOSSIBLE_–_THE_FINAL_RECKONING.jpg",
-        link: "Movies/MISSION_IMPOSSIBLE_–_THE_FINAL_RECKONING.html"
+        link: "Movies/MISSION_IMPOSSIBLE_–_THE_FINAL_RECKONING.html",
+        trailer: "https://www.youtube.com/embed/xxxxxx"
       },
       {
         title: "Captain America Civil War",
         genre: "Action",
         image: "Asset/A-Miku-can't-sing.jpg",
-        link: "Movies/miku.html"
+        link: "Movies/miku.html",
+        trailer: "https://www.youtube.com/embed/xxxxxx"
       },
       {
         title: "Thunderbolts",
         genre: "Superhero",
         image: "Asset/Thunderbolts.jpg",
-        link: "Movies/thunder.html"
+        link: "Movies/thunder.html",
+        trailer: "https://www.youtube.com/embed/xxxxxx"
       }
     ];
 
@@ -91,10 +96,15 @@
         const col = document.createElement("div");
         col.className = "col-md-4";
         col.innerHTML = `
-          <div class="card">
-            <img src="${film.image}" class="card-img-top" alt="${film.title}">
-          </div>
-        `;
+  <div class="movie-card">
+    <a href="${film.link}"><img src="${film.image}" alt="${film.title}" class="img-fluid"></a>
+    <div class="movie-overlay">
+      <button class="btn-trailer" data-video="${film.trailer || '#'}">🎬 Lihat Trailer</button>
+      <a href="${film.link}" class="btn-book" data-title="${film.title}">🎟️ Beli Tiket</a>
+    </div>
+  </div>
+`;
+
         resultContainer.appendChild(col);
       });
     }
