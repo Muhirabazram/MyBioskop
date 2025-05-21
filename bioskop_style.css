@@ -95,7 +95,8 @@ body {
 
 .movie-card {
   min-width: 180px;
-  flex-shrink: 0;
+  max-width: 200px;
+  margin: 0 auto;
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -103,9 +104,10 @@ body {
 }
 
 .movie-card img {
-  width: auto;
+  width: 100%;
   height: 270px;
   object-fit: cover;
+  display: block;
   border-radius: 10px;
 }
 
