@@ -60,6 +60,10 @@ Berikut adalah beberapa tampilan dari website **MyBioskop**:
 ## About the Author
 
 **Nama:** Muhammad Irfan Abdul Aziz Ramdani 
+
 **NIM:** 1224014
+
 **Program Studi:** Teknik Informatika  
+
 **Universitas:** STMIK Bandung 
+
