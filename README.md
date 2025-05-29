@@ -8,7 +8,7 @@ Pembuatan website ini menggunakan **GitHub Pages** sebagai media hosting, serta 
 
 ---
 
-## Alat dan Software yang Digunakan
+## Alat dan Software yang Digunakan dalam pembuatannya 
 
 - PC / Laptop
 - HP (Handphone)
