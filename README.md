@@ -26,7 +26,7 @@ Terdapat dua cara untuk mengakses atau menggunakan website ini:
 
 2. **Akses Langsung**  
    Anda juga dapat mengakses versi online melalui tautan berikut:  
-   [https://muhirabazram.github.io/MyBioskop/]([https://muhirabazram.github.io/MyBioskop/])
+   [https://muhirabazram.github.io/MyBioskop/](https://muhirabazram.github.io/MyBioskop/)
 
 ---
 
