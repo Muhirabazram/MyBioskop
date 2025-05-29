@@ -2,9 +2,7 @@
 
 ## MyBioskop
 
-**Website MyBioskop** adalah sebuah platform simulasi pemesanan tiket bioskop secara online.  
-Pengguna dapat memilih film, menentukan jumlah tiket yang diinginkan, serta melihat harga total yang harus dibayar.  
-Antarmuka yang sederhana dan interaktif membuat pengguna dapat dengan mudah memahami proses pemesanan tiket.
+**Website MyBioskop** adalah sebuah platform simulasi pemesanan tiket bioskop secara online. Pengguna dapat memilih film, menentukan jumlah tiket yang diinginkan, serta melihat harga total yang harus dibayar. Antarmuka yang sederhana dan interaktif membuat pengguna dapat dengan mudah memahami proses pemesanan tiket.
 
 Pembuatan website ini menggunakan **GitHub Pages** sebagai media hosting, serta **HTML**, **CSS**, dan **JavaScript** sebagai teknologi utama dalam pengembangannya.
 
