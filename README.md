@@ -97,6 +97,18 @@ Setelah pembayaran berhasil, pengguna diarahkan ke halaman sukses dan akan mener
 
 ![screenshot-sukses](screenshot/sukses.jpg)
 
+### 11. Riwayat Transaksi  
+Halaman ini menampilkan daftar riwayat transaksi yang pernah dilakukan oleh pengguna, lengkap dengan informasi film, tanggal, dan status pembayaran.  
+
+![screenshot-riwayat](screenshot/riwayat.jpg)
+
+---
+
+### 12. Halaman Contact Us  
+Pengguna dapat mengirimkan pertanyaan, kritik, atau saran melalui form kontak yang tersedia. Dilengkapi juga dengan informasi kontak tambahan.  
+
+![screenshot-contact](screenshot/contact.jpg)
+
 ---
 
 ## Bahasa Pemrograman & Teknologi yang Digunakan
@@ -108,6 +120,25 @@ Setelah pembayaran berhasil, pengguna diarahkan ke halaman sukses dan akan mener
 
 ---
 
+## Referensi
+
+Berikut beberapa referensi yang digunakan sebagai acuan dalam proses pembuatan website **MyBioskop**:
+
+1. [Vincent Budianto – Engi’s Cinema (GitHub)](https://github.com/vincentbudianto/Engi-s-Cinema/tree/master)  
+2. [Tutorial YouTube – Membuat Website Bioskop dengan HTML CSS JS](https://www.youtube.com/watch?v=8WoiNo7O5iw)  
+3. [Website Resmi CGV Indonesia](https://www.cgv.id/en//)
+
+---
+
+## Catatan
+
+Website **MyBioskop** ini masih memiliki berbagai kekurangan dan belum bisa dikatakan sempurna.  
+Namun, saya tidak akan melanjutkan atau menyempurnakan pengembangannya karena website ini sudah dinilai secara langsung oleh dosen dalam kondisi sebagaimana adanya.
+
+Terima kasih atas pengertiannya.
+
+
+---
 ## About the Author
 
 **Nama:** Muhammad Irfan Abdul Aziz Ramdani 
