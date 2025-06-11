@@ -52,6 +52,7 @@ Saat kursor diarahkan ke poster film, akan muncul dua tombol interaktif:
 - **Beli Tiket** — Untuk memulai proses pemesanan tiket.
 
 ![screenshot-hover](screenshot/hover.jpg)
+
 ![screenshot-hover](screenshot/trailer.jpg)
 
 ### 4. Halaman Detail Film  
