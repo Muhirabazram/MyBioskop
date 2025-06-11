@@ -35,8 +35,8 @@ Terdapat dua cara untuk mengakses atau menggunakan website ini:
 Berikut adalah beberapa tampilan dari website **MyBioskop**:
 
 ### 1. Halaman Utama
-![screenshot-beranda](screenshots/beranda.jpg)
-![screenshot-beranda2](screenshots/beranda2.jpg)
+![screenshot-beranda](screenshot/beranda.jpg)
+![screenshot-beranda2](screenshot/beranda2.jpg)
 
 ### 2. Halaman Now Playing
 ![screenshot-nowplaying](screenshots/nowplaying.png)
