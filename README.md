@@ -50,7 +50,7 @@ Menampilkan daftar film yang sedang tayang maupun yang akan datang, lengkap deng
 Saat kursor diarahkan ke poster film, akan muncul dua tombol interaktif:  
 - **Lihat Trailer** — Untuk menonton cuplikan film.  
 - **Beli Tiket** — Untuk memulai proses pemesanan tiket.
-- 
+
 ![screenshot-hover](screenshot/hover.jpg)
 ![screenshot-hover](screenshot/trailer.jpg)
 
